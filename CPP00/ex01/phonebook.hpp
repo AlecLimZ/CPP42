@@ -6,12 +6,18 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 17:13:42 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/08 20:19:51 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/10 19:47:07 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
+
+typedef struct	s_prv
+{
+	std::string phone;
+	std::string	secret;
+}	t_prv;
 
 class	Contact
 {
@@ -21,10 +27,10 @@ class	Contact
 		std::string	nickname;
 		Contact(void);
 		~Contact(void);
-		void addprv(int x, std::string y);
+		void addprv(std::string x, std::string y);
 		void printC(void) const;
 	private:
-		int			_phone;
+		std::string	_phone;
 		std::string	_secret;
 		
 };
@@ -34,6 +40,8 @@ class	PhoneBook
 	public:
 		int	total;
 		Contact Contact[8];
+		void Pb_input(std::string s1, int i, t_prv *prv);
+		void Pb_add(int i);
 		PhoneBook(void);
 		~PhoneBook(void);
 };

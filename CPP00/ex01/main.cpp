@@ -6,11 +6,12 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:24:13 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/08 20:19:44 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/10 20:44:48 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip> // to able to use namespace std's setw
 #include "phonebook.hpp"
 
 PhoneBook::PhoneBook(void)
@@ -27,10 +28,9 @@ PhoneBook::~PhoneBook(void)
 Contact::Contact(void)
 {
 	std::cout << "Contact Constructor created" << std::endl;
-	this->_phone = 0;
 }
 
-void	Contact::addprv(int x, std::string y)
+void	Contact::addprv(std::string x, std::string y)
 {
 	this->_phone = x;
 	this->_secret = y;
@@ -38,8 +38,35 @@ void	Contact::addprv(int x, std::string y)
 
 void	Contact::printC(void) const
 {
-	std::cout << "private ph: " << this->_phone << std::endl;
-	std::cout << "private _secret " <<  this->_secret << std::endl;
+	std::cout << "|" << std::right << std::setw(10) << "INDEX";
+	std::cout << "|" << std::right << std::setw(10) << "1";
+
+	std::cout << "|" << std::endl;
+
+	std::cout << "|" << std::right << std::setw(10) << "FIRST NAME";
+	std::cout << "|" << std::right << std::setw(10) << this->first;
+
+	std::cout << "|" << std::endl;
+	
+	std::cout << "|" << std::right << std::setw(10) << "LAST NAME";
+	std::cout << "|" << std::right << std::setw(10) << this->last;
+
+	std::cout << "|" << std::endl;
+
+	std::cout << "|" << std::right << std::setw(10) << "NICKNAME";
+	std::cout << "|" << std::right << std::setw(10) << this->nickname;
+
+	std::cout << "|" << std::endl;
+	
+	std::cout << "|" << std::right << std::setw(10) << "PHONE";
+	std::cout << "|" << std::right << std::setw(10) << this->_phone;
+
+	std::cout << "|" << std::endl;
+	
+	std::cout << "|" << std::right << std::setw(10) << "SECRET";
+	std::cout << "|" << std::right << std::setw(10) << this->_secret;
+
+	std::cout << "|" << std::endl;
 }
 
 Contact::~Contact(void)
@@ -47,25 +74,53 @@ Contact::~Contact(void)
 	std::cout << "Contact aka destructor is created" << std::endl;
 }
 
-void	ft_add(PhoneBook *Pb, int i)
+void	PhoneBook::Pb_input(std::string s1, int i, t_prv *prv)
 {
-	int			phone;
-	std::string secret;
+	int flag = 1;
+	static int n = 0;
 
-	Pb->total++;
-	std::cout << "First name ->: ";
-	std::cin >> Pb->Contact[i].first;
-	std::cout << "Last name ->: ";
-	std::cin >> Pb->Contact[i].last;
-	std::cout << "Nickname ->: ";
-	std::cin >> Pb->Contact[i].nickname;
-	std::cout << "Phone Number ->: ";
-	std::cin >> phone;
-	std::cout << "What is your dark secret? ->:";
+	while (flag)
+	{
+		std::cout << s1;
+		std::cin.ignore(0);
+		if (n == 0)
+			getline(std::cin, this->Contact[i].first);
+		else if (n == 1)
+			getline(std::cin, this->Contact[i].last);
+		else if (n == 2)
+			getline(std::cin, this->Contact[i].nickname);
+		else if (n == 3)
+			getline(std::cin, prv->phone);
+		else if (n == 4)
+			getline(std::cin, prv->secret);
+		if ((this->Contact[i].first == ""  && n == 0) ||
+			(this->Contact[i].last == "" && n == 1) ||
+			(this->Contact[i].nickname == "" && n == 2) ||
+			(prv->phone == "" && n == 3) ||
+			(prv->secret == "" && n == 4))
+			std::cout << "This field cannot be empty. Please input again" << std::endl;
+		else
+			flag = 0;
+	}
+	n++;
+	if (n == 5)
+		n = 0;
+}
+
+void	PhoneBook::Pb_add(int i)
+{
+	t_prv	prv;
+
+	this->total++;
 	std::cin.ignore();
-	getline(std::cin, secret);
-	Pb->Contact[i].addprv(phone, secret);
-	Pb->Contact[i].printC();
+	Pb_input("First name ->: ", i, &prv);
+	Pb_input("Last name ->: ", i, &prv);
+	Pb_input("Nickname ->: ", i, &prv);
+	Pb_input("Phone Number ->: ", i, &prv);
+	Pb_input("What is your dark secret? ->: ", i, &prv);
+	
+	this->Contact[i].addprv(prv.phone, prv.secret);
+	this->Contact[i].printC();
 }
 
 int	main(void)
@@ -82,15 +137,16 @@ int	main(void)
 		std::cin >> input;
 		if (input.compare("ADD") == 0)
 		{
-			ft_add(&Pb, index);
+			std::cout << index << std::endl;
+			if (index == 8)
+				index = 0;
+			Pb.Pb_add(index);
 			index++;
-			//std::cout << "end here?" << std::endl;
 		}
 		else if (input.compare("EXIT") == 0)
 			break;
 		else
 			std::cout << "Error input: Please type either ADD, SEARCH & EXIT\n";
 	}
-
 	return (0);
 }
