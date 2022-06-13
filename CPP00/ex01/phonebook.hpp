@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 17:13:42 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/10 19:47:07 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:03:58 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class	Contact
 		Contact(void);
 		~Contact(void);
 		void addprv(std::string x, std::string y);
-		void printC(void) const;
+		void displayphone(void);
+		void displaysecret(void);
 	private:
 		std::string	_phone;
 		std::string	_secret;
@@ -44,6 +45,7 @@ class	PhoneBook
 		void Pb_add(int i);
 		PhoneBook(void);
 		~PhoneBook(void);
+		void Pb_search(void);
 };
 
 #endif

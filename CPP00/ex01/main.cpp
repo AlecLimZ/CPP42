@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:24:13 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/10 20:44:48 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/13 16:19:26 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,42 +36,58 @@ void	Contact::addprv(std::string x, std::string y)
 	this->_secret = y;
 }
 
-void	Contact::printC(void) const
+void	PhoneBook::Pb_search(void)
 {
 	std::cout << "|" << std::right << std::setw(10) << "INDEX";
-	std::cout << "|" << std::right << std::setw(10) << "1";
+	for (int i = 0; i < this->total; i++)
+		std::cout << "|" << std::right << std::setw(10) << i + 1;
 
 	std::cout << "|" << std::endl;
 
 	std::cout << "|" << std::right << std::setw(10) << "FIRST NAME";
-	std::cout << "|" << std::right << std::setw(10) << this->first;
+	for (int i = 0; i < this->total; i++)
+		std::cout << "|" << std::right << std::setw(10) << this->Contact[i].first;
 
 	std::cout << "|" << std::endl;
 	
 	std::cout << "|" << std::right << std::setw(10) << "LAST NAME";
-	std::cout << "|" << std::right << std::setw(10) << this->last;
+	for (int i = 0; i < this->total; i++)
+		std::cout << "|" << std::right << std::setw(10) << this->Contact[i].last;
 
 	std::cout << "|" << std::endl;
 
 	std::cout << "|" << std::right << std::setw(10) << "NICKNAME";
-	std::cout << "|" << std::right << std::setw(10) << this->nickname;
+	for (int i = 0; i < this->total; i++)
+		std::cout << "|" << std::right << std::setw(10) << this->Contact[i].nickname;
 
 	std::cout << "|" << std::endl;
 	
 	std::cout << "|" << std::right << std::setw(10) << "PHONE";
-	std::cout << "|" << std::right << std::setw(10) << this->_phone;
+	for (int i = 0; i < this->total; i++)
+		this->Contact[i].displayphone();
 
 	std::cout << "|" << std::endl;
 	
 	std::cout << "|" << std::right << std::setw(10) << "SECRET";
-	std::cout << "|" << std::right << std::setw(10) << this->_secret;
-
+	for (int i = 0; i < this->total; i++)
+		this->Contact[i].displaysecret();
+	
 	std::cout << "|" << std::endl;
 }
 
 Contact::~Contact(void)
 {
 	std::cout << "Contact aka destructor is created" << std::endl;
+}
+
+void	Contact::displayphone(void)
+{
+	std::cout << "|" << std::right << std::setw(10) << this->_phone;
+}
+
+void	Contact::displaysecret(void)
+{
+	std::cout << "|" << std::right << std::setw(10) << this->_secret;
 }
 
 void	PhoneBook::Pb_input(std::string s1, int i, t_prv *prv)
@@ -105,6 +121,7 @@ void	PhoneBook::Pb_input(std::string s1, int i, t_prv *prv)
 	n++;
 	if (n == 5)
 		n = 0;
+
 }
 
 void	PhoneBook::Pb_add(int i)
@@ -112,6 +129,8 @@ void	PhoneBook::Pb_add(int i)
 	t_prv	prv;
 
 	this->total++;
+	if (this->total > 8)
+		this->total = 8;
 	std::cin.ignore();
 	Pb_input("First name ->: ", i, &prv);
 	Pb_input("Last name ->: ", i, &prv);
@@ -120,7 +139,6 @@ void	PhoneBook::Pb_add(int i)
 	Pb_input("What is your dark secret? ->: ", i, &prv);
 	
 	this->Contact[i].addprv(prv.phone, prv.secret);
-	this->Contact[i].printC();
 }
 
 int	main(void)
@@ -134,10 +152,9 @@ int	main(void)
 	exit = "EXIT";
 	while (1)
 	{
-		std::cin >> input;
+		getline(std::cin, input);
 		if (input.compare("ADD") == 0)
 		{
-			std::cout << index << std::endl;
 			if (index == 8)
 				index = 0;
 			Pb.Pb_add(index);
@@ -145,6 +162,8 @@ int	main(void)
 		}
 		else if (input.compare("EXIT") == 0)
 			break;
+		else if (input.compare("SEARCH") == 0)
+			Pb.Pb_search();
 		else
 			std::cout << "Error input: Please type either ADD, SEARCH & EXIT\n";
 	}
