@@ -6,29 +6,13 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/08 16:24:13 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/13 21:12:58 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/14 18:04:11 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <iomanip> // to able to use namespace std's setw
 #include "phonebook.hpp"
-
-PhoneBook::PhoneBook(void)
-{
-	std::cout << "PhoneBook Constructor created" << std::endl;
-	return ;
-}
-
-PhoneBook::~PhoneBook(void)
-{
-	std::cout << "PhoneBook aka destructor is created" << std::endl;
-}
-
-Contact::Contact(void)
-{
-	std::cout << "Contact Constructor created" << std::endl;
-}
 
 void	Contact::addprv(std::string x, std::string y)
 {
@@ -52,8 +36,6 @@ void	PhoneBook::Pb_search(void)
 	std::cout << "|" << std::right << std::setw(10) << "FIRST NAME";
 	std::cout << "|" << std::right << std::setw(10) << "LAST NAME";
 	std::cout << "|" << std::right << std::setw(10) << "NICKNAME";
-	std::cout << "|" << std::right << std::setw(10) << "PHONE";
-	std::cout << "|" << std::right << std::setw(10) << "SECRET";
 	
 	std::cout << "|" << std::endl;
 	
@@ -72,30 +54,53 @@ void	PhoneBook::Pb_search(void)
 			ft_tmp(this->Contact[i].nickname);
 		else
 			std::cout << "|" << std::right << std::setw(10) << this->Contact[i].nickname;
-		this->Contact[i].displayphone();
-		this->Contact[i].displaysecret();
 		std::cout <<  "|" << std::endl;
 	}
 
 	int	i = 0;
 
-	std::cout << "Which index you want to view?" << std::endl;
-	std::cin >> i;
-}
-
-Contact::~Contact(void)
-{
-	std::cout << "Contact aka destructor is created" << std::endl;
+	while (1)
+	{
+		std::cout << "Which index you want to view?: ";
+		std::cin >> i;
+		while (std::cin.fail())
+    	{
+			std::cin.clear();
+			std::cin.ignore(INT_MAX, '\n');
+			std::cout << "You can only enter numbers.\n";
+			std::cout << "Which index you want to view?: ";
+			std::cin >> i;
+    	}
+		if (this->total == 0 )
+		{
+			std::cout << "Empty. Please add a new details by type ADD" << std::endl;
+			break ;
+		}
+		else if (i <= 0 || i > total)
+		{
+			std::cout << "Error index. Please input only between 1 ~ " << this->total << std::endl;
+			continue ;
+		}
+		else
+		{
+			std::cout << "First name: " << this->Contact[i - 1].first << std::endl;
+			std::cout << "Last name: " << this->Contact[i - 1].last << std::endl;
+			std::cout << "Nickname: " << this->Contact[i - 1].nickname << std::endl;
+			this->Contact[i - 1].displayphone();
+			this->Contact[i - 1].displaysecret();
+			break ;
+		}
+	}
 }
 
 void	Contact::displayphone(void)
 {
-	std::cout << "|" << std::right << std::setw(10) << this->_phone;
+	std::cout << "Phone: " << this->_phone << std::endl;
 }
 
 void	Contact::displaysecret(void)
 {
-	std::cout << "|" << std::right << std::setw(10) << this->_secret;
+	std::cout << "Dark Secret: " << this->_secret << std::endl;
 }
 
 void	PhoneBook::Pb_input(std::string s1, int i, t_prv *prv)
@@ -159,18 +164,22 @@ int	main(void)
 	exit = "EXIT";
 	while (1)
 	{
-		getline(std::cin, input);
-		if (input.compare("ADD") == 0)
+		std::cout << "\nInput [ADD] | [SEARCH] | [EXIT]: ";
+		getline(std::cin, input); // user's input
+		if (input.compare("ADD") == 0) // if input "ADD", fill detail
 		{
 			if (index == 8)
 				index = 0;
 			Pb.Pb_add(index);
 			index++;
 		}
-		else if (input.compare("EXIT") == 0)
+		else if (input.compare("EXIT") == 0) // if input "EXIT", program exits
 			break;
-		else if (input.compare("SEARCH") == 0)
+		else if (input.compare("SEARCH") == 0) // "SEARCH" will display list of details
+		{
 			Pb.Pb_search();
+			std::cin.ignore();
+		}
 		else
 			std::cout << "Error input: Please type either ADD, SEARCH & EXIT\n";
 	}
