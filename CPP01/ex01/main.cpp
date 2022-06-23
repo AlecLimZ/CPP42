@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/22 19:56:35 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/23 15:33:38 by leng-chu         ###   ########.fr       */
+/*   Created: 2022/06/23 15:34:45 by leng-chu          #+#    #+#             */
+/*   Updated: 2022/06/23 19:06:02 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 int main(void)
 {
-	std::string a;
+	std::string name;
+	std::string temp;
+	int	i = 0;
 
-	std::cout << "What zombie name u want?" << std::endl;
-	getline(std::cin, a);
-	Zombie *z = newZombie(a); //create new zombie by using new (similar to malloc)
-	delete z; // the newZombie's object ends here
-	randomChump(a); // create new zombie without using new
-	return (0); // the chump zombie ends here
+	std::cout << "What name you want to put for zombie?: ";
+	getline(std::cin, name);
+	std::cout << "How many zombie u wanna to create?: ";
+	std::cin.ignore(0);
+	while (getline(std::cin, temp))
+	{
+		std::stringstream ss(temp);
+		if (ss >> i)
+			if (ss.eof())
+				break;
+		std::cout << "Error. Please numbers only\nHow many zombie u wanna to create?: ";
+	}
+	Zombie* horde = zombieHorde(i, name);
+
+	delete [] horde;
+	return 0;
 }
