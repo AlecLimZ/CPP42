@@ -6,11 +6,12 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 18:37:04 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/24 18:42:38 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:23:35 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
 
 int	main()
 {
@@ -23,7 +24,7 @@ int	main()
 		bob.attack();
 	}
 	{
-		Weapon club = Weapon("crude spiked club");
+	Weapon club = Weapon("crude spiked club");
 
 		HumanB	jim("Jim");
 		jim.setWeapon(club);

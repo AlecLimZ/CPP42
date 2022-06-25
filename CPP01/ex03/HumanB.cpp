@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 17:08:18 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/25 17:23:01 by leng-chu         ###   ########.fr       */
+/*   Created: 2022/06/25 17:11:05 by leng-chu          #+#    #+#             */
+/*   Updated: 2022/06/25 17:23:11 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "HumanB.hpp"
 
-#include "Weapon.hpp"
-#include <iostream>
-#include <string>
+HumanB::HumanB(std::string n):name(n){}
 
-class HumanB
+void	HumanB::setWeapon(Weapon & club)
 {
-	std::string name;
-	std::string const * weapon;
-	public:
-		HumanB(std::string n);
-		void attack(void);
-		void setWeapon(Weapon & club);
-};
+	weapon = &club.getType();
+}
+
+void	HumanB::attack(void)
+{
+	std::cout << this->name << " attacks with their " << *weapon << std::endl;
+}

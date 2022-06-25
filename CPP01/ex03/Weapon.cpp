@@ -6,18 +6,20 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 18:56:42 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/24 18:59:47 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/25 16:05:33 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-std::string & Weapon::getType() const
+Weapon::Weapon(std::string n)
 {
-	std::string& strRef;
+	this->setType(n);
+}
 
-	strRef = this->type;
-	return (strRef);
+std::string const & Weapon::getType()
+{
+	return (type);
 }
 
 void Weapon::setType(std::string n)

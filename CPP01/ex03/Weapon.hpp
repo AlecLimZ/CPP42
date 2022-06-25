@@ -6,19 +6,18 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 18:45:33 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/24 18:57:33 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/25 17:13:48 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#pragma once
 #include <string>
-#include "HumanA.hpp"
-#include "HumanB.hpp"
 
 class Weapon
 {
-	std::string	type;
+	std::string type;
 	public:
-		std::string& getType() const;
+		Weapon(std::string n);
+		std::string const & getType();
 		void	setType(std::string n);
 };
