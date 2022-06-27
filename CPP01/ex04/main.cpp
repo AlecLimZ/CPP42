@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 16:10:31 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/27 15:32:14 by leng-chu         ###   ########.fr       */
+/*   Created: 2022/06/27 15:53:59 by leng-chu          #+#    #+#             */
+/*   Updated: 2022/06/27 21:19:10 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "replace.hpp"
 
-HumanA::HumanA(std::string n, Weapon & club):name(n), weapon(club.getType()) // Learn that reference initialize work here, do not work inside the block
+int	main(int ac, char **av)
 {
-}
-
-void	HumanA::attack(void)
-{
-	std::cout << this->name << " attacks with their " << this->weapon << std::endl;
+	if (ac != 2)
+	{
+		std::cerr << "Please input ./replace <filename> <str1> <str2>\n";
+		return (1);
+	}
+	Replace f(av[1]);
+	f.R_copy();
+	return (0);
 }

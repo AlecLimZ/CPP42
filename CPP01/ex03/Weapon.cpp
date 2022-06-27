@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/24 18:56:42 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/25 16:05:33 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/27 15:33:16 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Weapon::Weapon(std::string n)
 	this->setType(n);
 }
 
-std::string const & Weapon::getType()
+std::string const & Weapon::getType() // reference to const, const reference is impossible
 {
 	return (type);
 }

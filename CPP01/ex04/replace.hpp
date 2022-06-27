@@ -1,22 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   replace.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/25 16:10:31 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/27 15:32:14 by leng-chu         ###   ########.fr       */
+/*   Created: 2022/06/27 15:54:19 by leng-chu          #+#    #+#             */
+/*   Updated: 2022/06/27 21:19:17 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include <iostream>
+#include <string>
+#include <fstream> // need for file steam
 
-HumanA::HumanA(std::string n, Weapon & club):name(n), weapon(club.getType()) // Learn that reference initialize work here, do not work inside the block
+class Replace
 {
-}
-
-void	HumanA::attack(void)
-{
-	std::cout << this->name << " attacks with their " << this->weapon << std::endl;
-}
+	std::string _filename;
+	std::ifstream _ifs;
+	std::ofstream _ofs;
+	public:
+		Replace(std::string filename);
+		~Replace(void);
+		void	R_copy(void);
+};
