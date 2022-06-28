@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:54:19 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/27 21:19:17 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/28 14:56:57 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ class Replace
 	std::ofstream _ofs;
 	public:
 		Replace(std::string filename);
-		~Replace(void);
-		void	R_copy(void);
+		void	R_copy(std::string str1, std::string str2);
 };

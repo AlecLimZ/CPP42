@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:57:34 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/27 21:19:07 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/28 15:05:13 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 Replace::Replace(std::string filename)
 {
 	this->_filename = filename;
-	std::cout << "c_replace: this construstor is created" << std::endl;
 	this->_ifs.open(this->_filename);
 	if (!_ifs)
 	{
@@ -25,20 +24,15 @@ Replace::Replace(std::string filename)
 	}
 }
 
-Replace::~Replace(void)
-{
-	this->_ifs.close();
-	std::cout << "replace object ended here" << std::endl;
-}
-
-void	Replace::R_copy(void)
+void	Replace::R_copy(std::string str1, std::string str2)
 {
 	std::string	newfile = "new";
 	std::string	line;
 	std::size_t	found;
 	std::string search;
+	int find = 0;
 
-	search = "you";
+	search = str1;
 	if (this->_ifs)
 	{
 		newfile.append(this->_filename);
@@ -51,17 +45,20 @@ void	Replace::R_copy(void)
 				found = line.find(search);
 				if (found != std::string::npos)
 				{
-					std::cout << "\"you\" found at: " << found << std::endl;
+					find++;
+	//				std::cout << "\"you\" found at: " << found << std::endl;
 					std::string change = line.substr(0, found);
-					change = change + "me";
+					change = change + str2; // this is how str2 replace str1
 					change = change + line.substr(found + search.length());
-					std::cout << "final: " << change << std::endl;
+	//				std::cout << "final: " << change << std::endl;
 					this->_ofs << change << "\n";
 				}
 				else
 					_ofs << line << "\n";
 			}
 		}
+		if (find == 0)
+			std::cerr << "ALERT: str1 not found in the filename's content" << std::endl;
 	}
 	else
 		std::cerr << "Cannot read file" << std::endl;
