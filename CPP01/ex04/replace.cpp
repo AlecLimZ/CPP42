@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/27 15:57:34 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/28 15:05:13 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/29 13:25:02 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Replace::Replace(std::string filename)
 
 void	Replace::R_copy(std::string str1, std::string str2)
 {
-	std::string	newfile = "new";
+	std::string	newfile = ".replace";
 	std::string	line;
 	std::size_t	found;
 	std::string search;
@@ -35,15 +35,13 @@ void	Replace::R_copy(std::string str1, std::string str2)
 	search = str1;
 	if (this->_ifs)
 	{
-		newfile.append(this->_filename);
-		this->_filename = newfile;
+		this->_filename.append(newfile);
 		this->_ofs.open(this->_filename);
 		if (this->_ofs)
 		{
 			while (getline(_ifs, line))
 			{
-				found = line.find(search);
-				if (found != std::string::npos)
+				while ((found = line.find(search)) != std::string::npos)
 				{
 					find++;
 	//				std::cout << "\"you\" found at: " << found << std::endl;
@@ -51,10 +49,9 @@ void	Replace::R_copy(std::string str1, std::string str2)
 					change = change + str2; // this is how str2 replace str1
 					change = change + line.substr(found + search.length());
 	//				std::cout << "final: " << change << std::endl;
-					this->_ofs << change << "\n";
+					line = change;
 				}
-				else
-					_ofs << line << "\n";
+				_ofs << line << "\n";
 			}
 		}
 		if (find == 0)
