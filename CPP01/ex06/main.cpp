@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/28 15:10:17 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/28 18:22:46 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/06/29 13:02:10 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ int	main(int ac, char **av)
 			h.complain(input);
 		}
 		else
-			std::cerr << "Error: Please input only one of either DEBUG, INFO, WARNING or ERROR" << std::endl;
+			std::cerr << "Error: Please input only one word of either DEBUG, INFO, WARNING or ERROR" << std::endl;
 	}
 	else
-		std::cerr << "Error: Please input only one of either DEBUG, INFO, WARNING or ERROR" << std::endl;
+		std::cerr << "Error: Please input only one word of either DEBUG, INFO, WARNING or ERROR" << std::endl;
 	return (0);
 }

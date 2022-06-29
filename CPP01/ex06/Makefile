@@ -6,22 +6,30 @@
 #    By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/28 15:08:02 by leng-chu          #+#    #+#              #
-#    Updated: 2022/06/28 17:39:28 by leng-chu         ###   ########.fr        #
+#    Updated: 2022/06/29 13:01:55 by leng-chu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	harlFilter
 SRC		=	main.cpp Harl.cpp
-CC		=	c++ -Wall -Wextra -Werror -std=c++98
+OBJ		=	*.o
+GCC		=	c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+INC		=	-I.
 
-all:	$(NAME)
+all:		$(NAME)
 
-$(NAME): $(SRC)
-		$(CC) $^ -o $@
+$(OBJ):		$(SRC)
+			@$(GCC) $(INC) -c $^
+
+$(NAME): 	$(OBJ)
+			@$(GCC) $^ -o $@
 
 clean:
-		rm -rf $(NAME)
+			rm -rf $(OBJ)
 
-re:		clean all
+fclean:		clean
+			rm -rf $(NAME)
 
-.PHONY:	all clean re
+re:			fclean all
+
+.PHONY:	all clean fclean re

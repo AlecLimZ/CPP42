@@ -6,24 +6,30 @@
 #    By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/06/22 19:52:20 by leng-chu          #+#    #+#              #
-#    Updated: 2022/06/22 20:23:23 by leng-chu         ###   ########.fr        #
+#    Updated: 2022/06/29 12:47:15 by leng-chu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= zombie
 SRC		= main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
-GCC		= c++ -Wall -Wextra -Werror -std=c++98
+OBJ		= *.o
+GCC		= c++ -Wall -Wextra -Werror -std=c++98 -fsanitize=address
+INC		= -I.
 
-all:	$(NAME)
+all:		$(NAME)
 
-$(NAME):	$(SRC)
-		$(GCC) $^ -o $@
+$(OBJ):		$(SRC)
+			@$(GCC) $(INC) -c $^
+
+$(NAME):	$(OBJ)
+			@$(GCC) $^ -o $@
 
 clean:
-		rm -rf $(NAME)
+			rm -rf $(OBJ)
 
-fclean: clean
+fclean: 	clean
+			rm -rf $(NAME)
 
-re:		fclean all
+re:			fclean all
 
 .PHONY:	all clean fclean re
