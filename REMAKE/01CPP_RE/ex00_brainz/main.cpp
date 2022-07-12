@@ -5,34 +5,22 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/06/28 15:42:04 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/06/28 15:45:33 by leng-chu         ###   ########.fr       */
+/*   Created: 2022/07/07 13:16:06 by leng-chu          #+#    #+#             */
+/*   Updated: 2022/07/07 13:23:09 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-
-class X
-{
-	public:
-		int a;
-		void f(int b)
-		{
-			std::cout << "The value of b is " << b << std::endl;
-		}
-};
+#include "Zombie.hpp"
 
 int main(void)
 {
-	int X::*ptr2data = &X::a;
+	std::string a;
 
-	void (X::*ptr2function)(int) = &X::f;
-
-	X xobject;
-
-	xobject.*ptr2data = 10;
-
-	std::cout << "The value of a is " << xobject.a << std::endl;
-
-	(xobject.*ptr2function)(20);
+	std::cout << "What zombie name u want?" << std::endl;
+	getline(std::cin, a);
+	Zombie *z = newZombie(a);
+	z->announce();
+	delete z;
+	randomChump(a);
+	return (0);
 }
