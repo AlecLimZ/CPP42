@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   test.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 10:08:25 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/15 17:06:46 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:49:17 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,5 @@ int main(void)
 	std::cout << a++ << std::endl;
 	std::cout << --a << std::endl;
 	std::cout << a-- << std::endl;
-	std::cout << b-- << std::endl;
-	std::cout << --b << std::endl;
-	std::cout << b++ << std::endl;
-	std::cout << ++b << std::endl;
 	return (0);
 }

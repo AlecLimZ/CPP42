@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 15:58:18 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/16 17:58:07 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/18 17:43:54 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ Point::~Point(void) {}
 
 void	Point::P_display(void)
 {
-	std::cout << this->_x << std::endl;
-	std::cout << this->_y << std::endl;
+	std::cout << "(" << this->_x << ", " << this->_y << ")";;
 }
 
 Point::Point(float const a, float const b): _x(a), _y(b) {}

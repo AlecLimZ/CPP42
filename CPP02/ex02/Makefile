@@ -12,8 +12,12 @@ $(OBJ):		$(SRC)
 $(NAME):	$(OBJ)
 			$(CC) $^ -o $@
 
+test:
+			$(CC) $(HEADER) -c Fixed.cpp test.cpp
+			$(CC) $(OBJ) -o test
+
 clean:
-			rm -rf $(NAME)
+			rm -rf $(NAME) test
 
 fclean:		clean
 			rm -rf $(OBJ)
