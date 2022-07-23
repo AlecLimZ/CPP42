@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 10:08:25 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/18 17:45:14 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/19 10:18:20 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int main(void)
 {
 	Point	a(-2, 3);
-	Point	b(3, 2);
+	Point	b = a;
 	Point	c(1, 5);
 	float	x;
 	float	y;
@@ -27,6 +27,8 @@ int main(void)
 	std::cout << "Give y in float number for point->: ";
 	std::cin >> y;
 	Point	pt(x, y);
+
+	Point d = a;
 
 	if (bsp(a, b, c, pt))
 	{

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/15 10:36:47 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/15 13:57:27 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/19 09:39:49 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,12 +65,12 @@ Fixed::Fixed(float const raw)
 
 float	Fixed::toFloat(void) const
 {
-	return ((float)this->_fix / (float)(1 << this->_frac));
+	return ((float)this->_fix / (1 << this->_frac));
 }
 
 int		Fixed::toInt(void) const
 {
-	return ((int)this->_fix / (int)(1 << this->_frac));
+	return ((int)this->_fix / (1 << this->_frac));
 }
 
 std::ostream & operator<<(std::ostream & o, Fixed const & i)
