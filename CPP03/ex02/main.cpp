@@ -6,33 +6,43 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 16:48:39 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/25 15:02:57 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/25 17:40:29 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int main(void)
 {
-	ClapTrap a;
-	ClapTrap b("Jack");
+	FragTrap a;
+	FragTrap b("KINGFRAG");
 
-	while (b.getHp() > 0)
+	std::cout << a << std::endl;
+	a.attack("UglyFrog");
+	std::cout << a << std::endl;
+	while (b.getEp() > 0)
+		b.attack("Nightmare horse");
+	b.attack("Nightmare horse");
+	std::cout << b << std::endl;
+	while (a.getHp() > 0)
 	{
-		b.attack("MonsterEvil");
-		b.takeDamage(7);
-		b.beRepaired(2);
+		a.takeDamage(27);
+		a.attack("UglyFrog");
 	}
-	while (a.getEp() > 0)
-	{
-		a.attack("BigAnt");
-		a.beRepaired(3);
-	}
-	a.attack("BigAnt");
-	a.beRepaired(3);
+	ClapTrap c("Grandmaster");
+	ScavTrap d("Scarlet");
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
-	std::cout << ">>>after " << a.getName() << " copy " << b.getName() << "<<<\n" << std::endl;
+	std::cout << c << std::endl;
+	std::cout << d << std::endl;
+	a.highFivesGuys();
+	b.highFivesGuys();
+	std::cout << "\nAfter d:" << d.getName() << " copy a:" << a.getName() << std::endl;
+	d = a;
+	std::cout << a << std::endl;
+	std::cout << d << std::endl;
+	std::cout << "\nAfter a:" << a.getName() << " copy b:" << b.getName() << std::endl;
 	a = b;
 	std::cout << a << std::endl;
 	std::cout << b << std::endl;
