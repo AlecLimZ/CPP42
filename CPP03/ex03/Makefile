@@ -1,8 +1,8 @@
-NAME		=	scavtrap
-SRC			=	main.cpp ClapTrap.cpp ScavTrap.cpp
+NAME		=	diamondtrap
+SRC			=	main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
 OBJ			=	*.o
 HEADER		=	-I.
-CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic -g -fsanitize=address
+CXXFLAGS	=	-Wall -Wextra -Werror -std=c++98 -pedantic -g -fsanitize=address -Wshadow -Wno-shadow
 
 all:	$(NAME)
 

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:52:31 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/25 17:19:53 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/26 13:03:10 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ClapTrap.hpp"
 
 // inherit from ClapTrap
-class ScavTrap:public ClapTrap
+class ScavTrap: virtual public ClapTrap
 {
 	public:
 		// Orthodox Canonical Form & parameter constructor
@@ -27,6 +27,7 @@ class ScavTrap:public ClapTrap
 		ScavTrap(std::string n);
 
 		//member function
+		void	attack(const std::string & target);
 		void	guardGate();
 
 		//extra
