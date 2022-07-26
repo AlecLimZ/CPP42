@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:49:51 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/26 13:55:18 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:11:47 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ FragTrap::FragTrap(void)
 	setName("FragDefault");
 	setEp(100);
 	setAtk(30);
-	this->_fatk = 30;
 	std::cout << BGREEN"\n===FragTrap Constructor[Default]==="DEF << std::endl;
 	std::cout << "Name: " << getName() << std::endl;
 	std::cout << "Hit points: " << getHp() << std::endl;
@@ -31,7 +30,6 @@ FragTrap::FragTrap(std::string n)
 	setName(n);
 	setEp(100);
 	setAtk(30);
-	this->_fatk = 30;
 	std::cout << BGREEN"\n===FragTrap Constructor[Parameter]==="DEF << std::endl;
 	std::cout << "Name: " << getName() << std::endl;
 	std::cout << "Hit points: " << getHp() << std::endl;
@@ -43,11 +41,6 @@ FragTrap::FragTrap(std::string n)
 FragTrap::FragTrap(FragTrap const & src)
 {
 	*this = src;
-}
-
-int	FragTrap::getFatk(void) const
-{
-	return (this->_fatk);
 }
 
 FragTrap & FragTrap::operator=(FragTrap const & rhs)

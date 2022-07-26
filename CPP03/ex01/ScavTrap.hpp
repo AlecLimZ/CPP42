@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 12:52:31 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/26 13:03:10 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:10:15 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "ClapTrap.hpp"
 
 // inherit from ClapTrap
-class ScavTrap: virtual public ClapTrap
+class ScavTrap: public ClapTrap
 {
 	public:
 		// Orthodox Canonical Form & parameter constructor

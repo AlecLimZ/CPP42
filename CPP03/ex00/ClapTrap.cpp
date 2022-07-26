@@ -6,13 +6,13 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/23 17:03:58 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/26 14:00:23 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:09:28 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void): _hitp(100), _ep(10), _atkd(0), _name("Dummy")
+ClapTrap::ClapTrap(void): _hitp(10), _ep(10), _atkd(0), _name("Dummy")
 {
 	std::cout << BGREEN"\n===Claptrap Status[Default Constructor]==="DEF << std::endl;
 	std::cout << "Name: " << getName() << std::endl;
@@ -29,7 +29,7 @@ ClapTrap::~ClapTrap(void)
 	std::cout << MAG"===========================\n"DEF << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string n): _hitp(100), _ep(10), _atkd(0), _name(n)
+ClapTrap::ClapTrap(std::string n): _hitp(10), _ep(10), _atkd(0), _name(n)
 {
 	std::cout << BGREEN"\n===Claptrap Status[Parameter Constructor]==="DEF << std::endl;
 	std::cout << "Name: " << getName() << std::endl;

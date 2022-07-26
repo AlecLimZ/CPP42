@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/25 15:40:15 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/07/26 13:03:31 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/07/26 15:11:11 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 
 #include "ClapTrap.hpp"
 
-class FragTrap: virtual public ClapTrap
+class FragTrap: public ClapTrap
 {
-	int	_fatk;
 	public:
 		FragTrap(void);
 		~FragTrap(void);
@@ -28,9 +27,6 @@ class FragTrap: virtual public ClapTrap
 	//member function
 	void		attack(const std::string & target);
 	void		highFivesGuys(void);
-
-	//getter
-	int			getFatk(void) const;
 };
 
 std::ostream & operator<<(std::ostream & o, FragTrap const & rhs);
