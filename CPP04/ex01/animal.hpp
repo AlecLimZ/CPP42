@@ -6,19 +6,20 @@
 /*   By: leng-chu <leng-chu@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 21:04:17 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/01 13:58:09 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/01 19:50:33 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ANIMAL_HPP
 # define ANIMAL_HPP
 
-#include "color.hpp"
+#include "brain.hpp"
 
 class	Animal
 {
 	protected:
 		std::string type;
+		static int _id;
 	public:
 		Animal(void);
 		virtual ~Animal(void);
@@ -33,6 +34,8 @@ class	Animal
 
 class	Cat: public Animal
 {
+	//private Brain for cat
+	Brain *_c;
 	public:
 		Cat(void);
 		~Cat(void);
@@ -40,10 +43,13 @@ class	Cat: public Animal
 		Cat & operator=(Cat const & rhs);
 
 		virtual void makeSound() const;
+		Brain *	getBrain(void) const;
 };
 
 class	Dog: public Animal
 {
+	//private Brain for dog
+	Brain *_d;
 	public:
 		Dog(void);
 		~Dog(void);
