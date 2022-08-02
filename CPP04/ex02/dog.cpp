@@ -6,18 +6,18 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/01 14:06:00 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/02 12:07:26 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/02 13:47:29 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "animal.hpp"
 
-Dog::Dog(void): _d(new Brain()), d_id(Animal::_id)
+Dog::Dog(void): _d(new Brain()), d_id(AAnimal::_id)
 {
-	Animal::type = "Dog";
+	AAnimal::type = "Dog";
 	std::cout << YELLOW"===Dog Constructor(Default)==="DEF << std::endl;
-	std::cout << "Animal type: " << getType() << std::endl;
-	std::cout << "Animal id: " << Animal::_id << std::endl;
+	std::cout << "AAnimal type: " << getType() << std::endl;
+	std::cout << "AAnimal id: " << AAnimal::_id << std::endl;
 	std::cout << "Brain address: " << _d << std::endl;
 	std::cout << YELLOW"=============================="DEF << std::endl;
 }
@@ -25,20 +25,20 @@ Dog::Dog(void): _d(new Brain()), d_id(Animal::_id)
 Dog::~Dog(void)
 {
 	std::cout << BRED"===Dog Destructor==="DEF << std::endl;
-	std::cout << "Animal type: " << getType() << std::endl;
-	std::cout << "Animal id: " << Animal::_id << std::endl;
+	std::cout << "AAnimal type: " << getType() << std::endl;
+	std::cout << "AAnimal id: " << AAnimal::_id << std::endl;
 	std::cout << "Deleting brain " << _d << std::endl;
 	delete _d;
 	std::cout << BRED"===================="DEF << std::endl;
 }
 
-Dog::Dog(Dog const & src): _d(new Brain()), d_id(Animal::_id)
+Dog::Dog(Dog const & src): _d(new Brain()), d_id(AAnimal::_id)
 {
 	_d->setIdeas(src.getIdea());
 	setType(src.getType());
 	std::cout << YELLOW"Dog class's Copy Constructor called\n"DEF << std::endl;
-	std::cout << "Animal type: " << getType() << std::endl;
-	std::cout << "Animal id: " << Animal::_id << std::endl;
+	std::cout << "AAnimal type: " << getType() << std::endl;
+	std::cout << "AAnimal id: " << AAnimal::_id << std::endl;
 	std::cout << "Brain address: " << _d << std::endl;
 }
 

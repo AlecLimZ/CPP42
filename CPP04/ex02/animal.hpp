@@ -6,7 +6,7 @@
 /*   By: leng-chu <leng-chu@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 21:04:17 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/02 12:03:42 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/02 13:45:04 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,27 @@
 
 #include "brain.hpp"
 
-class	Animal
+class	AAnimal
 {
 	protected:
 		std::string type;
 		static int _id;
 	public:
-		Animal(void);
-		virtual ~Animal(void);
-		Animal(Animal const & src);
-		Animal & operator=(Animal const & rhs);
+		AAnimal(void);
+		virtual ~AAnimal(void);
+		AAnimal(AAnimal const & src);
+		AAnimal & operator=(AAnimal const & rhs);
 
 		std::string getType(void) const;
 		int getId(void) const;
 		void setType(std::string n);
 
-		virtual void makeSound() const;
+		// this pure virtual function - make this class become abstract class
+		// abstract class means it has some pure virtual function like this as below.
+		virtual void makeSound() const = 0;
 };
 
-class	Cat: public Animal
+class	Cat: public AAnimal
 {
 	//private Brain for cat
 	Brain	*_c;
@@ -54,7 +56,7 @@ class	Cat: public Animal
 		void		giveBrain(std::string i);
 };
 
-class	Dog: public Animal
+class	Dog: public AAnimal
 {
 	//private Brain for dog
 	Brain	*_d;

@@ -6,7 +6,7 @@
 /*   By: leng-chu <leng-chu@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 16:38:54 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/02 13:14:42 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/02 14:00:19 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_block(void)
 void	ft_100(void)
 {
 	ft_block();
-	Animal *a[20];
+	AAnimal *a[20];
 	ft_block();
 	int num = 20;
 	for (int i = 0; i < num; i++)
@@ -51,8 +51,8 @@ void	ft_100(void)
 void	ft_start(void)
 {
 	ft_block();
-	const Animal *j = new Dog();
-	const Animal *i = new Cat();
+	const AAnimal *j = new Dog();
+	const AAnimal *i = new Cat();
 
 	ft_block();
 	delete j;
@@ -81,7 +81,14 @@ void	test_copy(void)
 
 int main(void)
 {
-	ft_start();
+//	AAnimal a;
+
+//	AAnimal b = new AAnimal();
+
+//	AAnimal *c = new Dog();
+//	AAnimal d(c);
+
+//	ft_start();
 //	ft_100();
 //	test_copy();
 	system("leaks poly");
