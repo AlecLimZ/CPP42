@@ -1,5 +1,5 @@
 NAME		=	interface
-SRC			=	main.cpp materia.cpp ice.cpp cure.cpp character.cpp
+SRC			=	main.cpp materia.cpp ice.cpp cure.cpp character.cpp materiasource.cpp
 OBJ			=	$(SRC:%.cpp=%.o)
 HEADER		=	-I.
 CXXFLAGS	+=	-Wall -Wextra -Werror -std=c++98 -pedantic

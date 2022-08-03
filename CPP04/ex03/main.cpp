@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 14:12:52 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/03 17:48:58 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/03 19:09:42 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,36 @@ void	ft_char(void)
 //	copy.unequip(0);
 }
 
+void	ft_imc(void)
+{
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+
+	ICharacter* me = new Character("me");
+
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	ICharacter* bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+}
+
 int	main(void)
 {
 	//ft_ice();
 	//ft_cure();
-	ft_char();
-	//system("leaks interface");
+//	ft_char();
+	ft_imc();
+	system("leaks interface");
+	return (0);
 }

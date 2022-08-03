@@ -6,14 +6,12 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:32:44 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/03 17:33:42 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:05:18 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "character.hpp"
 #include "materia.hpp"
-
-int	Character::index = 0;
 
 Character::Character(void):_name("Default")
 {

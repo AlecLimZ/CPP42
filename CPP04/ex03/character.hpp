@@ -6,19 +6,14 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:25:31 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/03 17:14:40 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:02:10 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
 
-#include <color.hpp>
-
-using std::cout;
-using std::endl;
-
-class	AMateria;
+#include "materiasource.hpp"
 
 class ICharacter
 {
