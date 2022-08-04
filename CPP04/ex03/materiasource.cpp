@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 18:12:11 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/03 19:10:40 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:06:51 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,46 @@
 
 MateriaSource::MateriaSource(void)
 {
-	cout << YELLOW"MateriaSource destructed\n"DEF << endl;
+	cout << YELLOW"MateriaSource New Construction[Default]\n"DEF << endl;
 	for (int i = 0; i < 5; i++)
 		store[i] = NULL;
 }
 
 MateriaSource::~MateriaSource(void)
 {
-	cout << BRED"MateriaSource destructed\n"DEF << endl;
 	for (int i = 0; i < 4; i++)
 		if (store[i])
 			delete store[i];
+	cout << BRED"MateriaSource destructed\n"DEF << endl;
+}
+
+MateriaSource::MateriaSource(MateriaSource const & src)
+{
+	cout << YELLOW"MateriaSource Copy Construction\n"DEF << endl;
+	for (int i = 0; i < 5; i++)
+		store[i] = NULL;
+	for (int i = 0; i < 4; i++)
+	{
+		if (src.store[i]->getType() == "ice")
+			store[i] = new Ice();
+		else if (src.store[i]->getType() == "cure")
+			store[i] = new Cure();
+	}
+}
+
+MateriaSource & MateriaSource::operator=(MateriaSource const & rhs)
+{
+	cout << YELLOW"MateriaSource Copy Assignment\n"DEF << endl;
+	for (int i = 0; i < 5; i++)
+		store[i] = NULL;
+	for (int i = 0; i < 4; i++)
+	{
+		if (rhs.store[i]->getType() == "ice")
+			store[i] = new Ice();
+		else if (rhs.store[i]->getType() == "cure")
+			store[i] = new Cure();
+	}
+	return (*this);
 }
 
 void	MateriaSource::learnMateria(AMateria* m)
@@ -40,9 +69,12 @@ void	MateriaSource::learnMateria(AMateria* m)
 		}
 	}
 	if (i == 4)
-		cout << "MateriaSource's store is full!\n: << endl";
+	{
+		cout << "MateriaSource's store is full!\n" << endl;
+		delete m;
+	}
 	else
-		cout << "MateriaSource successfully store a material " << store[i]->getType()
+		cout << "MateriaSource successfully learn the material " << store[i]->getType()
 			<< " [id:" << store[i]->getId() << "]\n" << endl;
 }
 
@@ -53,16 +85,16 @@ AMateria * MateriaSource::createMateria(std::string const & type)
 	int i = -1;
 	while (++i < 4)
 	{
-		if (store[i]->getType() == type)
+		if (store[i] && store[i]->getType() == type)
 		{
 			if (type == "ice")
 			{
-				cout << BCYAN"Found ice in the materia store to learn/equip\n"DEF << endl;
+				cout << BCYAN"Found ice in the materia store to create\n"DEF << endl;
 				tmp = new Ice();
 			}
 			else if (type == "cure")
 			{
-				cout << BCYAN"Found cure in the materia store to learn/equip\n"DEF << endl;
+				cout << BCYAN"Found cure in the materia store to create\n"DEF << endl;
 				tmp = new Cure();
 			}
 			break ;
@@ -70,7 +102,7 @@ AMateria * MateriaSource::createMateria(std::string const & type)
 	}
 	if (i == 4)
 	{
-		cout << "Type is unknown\n" << endl;
+		cout << RED"Type is unknown\n"DEF << endl;
 		return (0);
 	}
 	return (tmp);

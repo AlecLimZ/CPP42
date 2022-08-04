@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/03 11:32:44 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/03 18:05:18 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:41:05 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ Character::Character(void):_name("Default")
 
 Character::~Character(void)
 {
-	cout << RED"Character " << this->getName() << " destructed\n"DEF << endl;
 	for (int i = 0; i < 4; i++)
 	{
 		if (inventory[i])
 			delete inventory[i];
 	}
+	cout << RED"Character " << this->getName() << " destructed\n"DEF << endl;
 }
 
 Character::Character(std::string n):_name(n)

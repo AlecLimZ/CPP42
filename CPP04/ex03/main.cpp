@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 14:12:52 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/03 19:09:42 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/04 13:52:03 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,25 @@ void	ft_cure(void)
 
 void	ft_char(void)
 {
-	Character jack("Jack");
-	Character copy("Copy");
+	Character *jack = new Character("Jack");
+	Character *copy = new Character("Copy");
 	AMateria *a = new Ice();
-	jack.equip(a);
-	copy = jack;
-	copy.use(0, jack);
-	Character copy2 = jack;
-	copy2.use(0, jack);
-//	copy.unequip(0);
+	AMateria *b = new Cure();
+	jack->equip(a);
+	jack->equip(b);
+	jack->equip(b);
+	jack->unequip(1);
+	jack->unequip(1);
+	copy->use(0, *jack);
+	*copy = *jack;
+	copy->use(0, *jack);
+	delete copy;
+	Character *copy2 = new Character();
+	*copy2 = *jack;
+	copy2->use(0, *jack);
+	delete jack;
+	delete copy2;
+	delete b;
 }
 
 void	ft_imc(void)
@@ -79,12 +89,39 @@ void	ft_imc(void)
 	delete src;
 }
 
+void	ft_ms(void)
+{
+	MateriaSource *AAA = new MateriaSource();
+	AAA->learnMateria(new Ice());
+	AAA->learnMateria(new Cure());
+	AAA->learnMateria(new Cure());
+	AAA->learnMateria(new Ice());
+	AAA->learnMateria(new Ice());
+	MateriaSource *BBB = new MateriaSource();
+	ICharacter *Naruto = new Character("Naruto");
+	ICharacter *Sasuke = new Character("Sasuke");
+	AMateria* tmp;
+	tmp = AAA->createMateria("ice"); // found ice as AAA has "ice" stored
+	Naruto->equip(tmp);
+	Sasuke->equip(tmp); 
+	tmp = BBB->createMateria("ice"); // unknown type as BBB dont has "ice"
+	Naruto->equip(tmp);
+	*BBB = *AAA;
+	delete AAA;
+	tmp = BBB->createMateria("cure");
+	Naruto->equip(tmp);
+	Naruto->use(0, *Sasuke);
+	delete BBB;
+	delete Naruto;
+	delete Sasuke;
+}
+
 int	main(void)
 {
-	//ft_ice();
-	//ft_cure();
-//	ft_char();
 	ft_imc();
-	system("leaks interface");
+//	ft_ice();
+//	ft_cure();
+//	ft_char();
+//	ft_ms();
 	return (0);
 }
