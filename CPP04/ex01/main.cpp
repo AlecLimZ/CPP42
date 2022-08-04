@@ -6,7 +6,7 @@
 /*   By: leng-chu <leng-chu@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 16:38:54 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/02 13:14:42 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:12:59 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,5 @@ int main(void)
 	ft_start();
 //	ft_100();
 //	test_copy();
-	system("leaks poly");
 	return (0);
 }

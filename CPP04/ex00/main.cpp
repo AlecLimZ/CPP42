@@ -6,7 +6,7 @@
 /*   By: leng-chu <leng-chu@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 16:38:54 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/01 16:49:16 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:01:47 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int main(void)
 	delete i;
 
 
-
+	// For checking wrong animal
 	const WrongAnimal *wmeta = new WrongAnimal();
 	const WrongAnimal *wi = new WrongCat();
 
@@ -38,6 +38,7 @@ int main(void)
 	delete wmeta;
 	delete wi;
 
+	// extra test
 	const Cat *z = new Cat();
 	const Dog *x = new Dog();
 

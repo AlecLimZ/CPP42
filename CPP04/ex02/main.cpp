@@ -6,7 +6,7 @@
 /*   By: leng-chu <leng-chu@student.42kl.edu.m      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/30 16:38:54 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/02 14:00:19 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/04 14:18:24 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,15 @@ int main(void)
 
 //	AAnimal b = new AAnimal();
 
-//	AAnimal *c = new Dog();
 //	AAnimal d(c);
 
-//	ft_start();
+//	AAnimal *c = new Dog();
+//	c->makeSound();
+//	delete c;
+
+	ft_start();
 //	ft_100();
 //	test_copy();
-	system("leaks poly");
+	
 	return (0);
 }
