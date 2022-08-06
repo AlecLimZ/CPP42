@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/02 14:12:52 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/04 13:52:03 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/05 13:05:31 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,15 @@ void	ft_char(void)
 	Character *copy = new Character("Copy");
 	AMateria *a = new Ice();
 	AMateria *b = new Cure();
+	AMateria *c = new Cure();
+	AMateria *d = new Cure();
+	AMateria *e = new Cure();
 	jack->equip(a);
 	jack->equip(b);
 	jack->equip(b);
+	jack->equip(c);
+	jack->equip(d);
+	jack->equip(e);
 	jack->unequip(1);
 	jack->unequip(1);
 	copy->use(0, *jack);
@@ -118,10 +124,10 @@ void	ft_ms(void)
 
 int	main(void)
 {
-	ft_imc();
+//	ft_imc();
 //	ft_ice();
 //	ft_cure();
-//	ft_char();
+	ft_char();
 //	ft_ms();
 	return (0);
 }
