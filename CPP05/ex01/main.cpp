@@ -6,11 +6,11 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:21:33 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/08 11:50:15 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/08 18:35:03 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 void	ft_block(void)
 {
@@ -25,50 +25,46 @@ void	ft_block(void)
 	cout << "\n" << endl;
 }
 
+void	ft_testform(void)
+{
+	cout << YEL"\n===Constructors==="DEF << endl;
+	Form a;
+	cout << a << endl;
+	Form b("FormB", -100, 100);
+	cout << b << endl;
+	Form c("FormC", 100, 200);
+	cout << c << endl;
+	cout << YEL"\n===Copy Constructor==="DEF << endl;
+	Form d = Form("FormD", -100, 200);
+	cout << d << endl;
+	cout << YEL"\n===Copy Assignment==="DEF << endl;
+	a = d;
+}
+
+void	ft_testf_b(void)
+{
+	Bureaucrat a("JackA", 190);
+	Bureaucrat b("JackB", 1);
+	cout << a << b << endl;
+
+	Form t("RankingForm", 1, 150);
+	cout << t << endl;
+
+	t.beSigned(a); // should cannot sign
+	cout << t << endl;
+
+	t.beSigned(b); // should success sign
+	cout << t << endl;
+
+	Form t2("WrongForm", -100, 140);
+	cout << t2 << endl;
+	// should not able to sign even b's grade is between 1~150 as the form's grade requirement itself is out of bound.
+	t2.beSigned(b);
+}
+
 int main(void)
 {
-	cout << YEL"\n===Throw when grade is lower than 150th or higher than 1st==="DEF << endl;
-	Bureaucrat a("Jack", 299); // create new object a, throw
-	cout << a << endl;
-	cout << endl;
-	Bureaucrat b("JackB", -3); // create new object b, throw
-	cout << b << endl;
-
-	ft_block();
-
-	cout << YEL"===Copy Assignment==="DEF << endl;
-	/* copy assignment - should be not able to throw as both existing
-	 * is alwiz between 1 ~ 150*/
-	a = b;
-	cout << a << endl;
-	cout << b << endl;
-	
-	ft_block();
-	
-	cout << YEL"===Operation increment & decrement==="DEF << endl;
-	Bureaucrat c("JackC", 150); // create new object c, no throw
-	cout << c << endl;
-	c--; // postfix decrement, throwing then prevent the decrement
-	--c; // prefix decrement, throwing then prevent the decrement
-	cout << c << endl;
-	++c; // prefix increment - no throw
-	c++; // postfix increment - no throw
-	cout << c << endl; 
-	
-	cout << endl;
-
-	Bureaucrat d("JackD", 1); // no throw
-	cout << d << endl; 
-	d++; // postfix increment - throw, prevent the increment
-	++d; // prefix increment - throw, prevent the increment
-	cout << d << endl;
-	--d; // prefix decrement - no throw
-	d--; // prefix decrement - no throw
-	cout << d << endl;
-	
-	ft_block();
-	
-	cout << YEL"===Copy Constructor==="DEF << endl;
-	Bureaucrat e(a); // copy constructor - no throw as it should be not able to throw
-	cout << "Object e status after copy object a:\n" <<  e << endl;
+//	ft_testform();
+	ft_testf_b();
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:21:56 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/08 11:22:07 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/08 15:17:21 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class	Bureaucrat
 		Bureaucrat(Bureaucrat const & src);
 		Bureaucrat & operator=(Bureaucrat const & rhs);
 
-		// Error handling class
+		// Exception handling class
 		class GradeTooHighException: public std::exception
 		{
 			public:
@@ -46,7 +46,7 @@ class	Bureaucrat
 			public:
 				virtual const char *what() const throw();
 		};
-		int	error_handling(void);
+		int	exception_handling(void);
 
 		// Accessors (getter & setters)
 		std::string	getName(void) const;
