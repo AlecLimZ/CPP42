@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:02:27 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/09 18:04:46 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/09 20:10:00 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,24 @@
 
 
 // create a constrctor of base class is to init the base class's PRIVATE attribute
-ShrubberyCreationForm::ShrubberyCreationForm(void):Form("ShrubberyCreationForm", 145, 137), _target("DefaultTarget")
+ShrubberyCreationForm::ShrubberyCreationForm(void):Form("ShrubberyCreationForm", 145, 137), _target("DefaultTarget"), _isExec(false)
 {
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm(void)
 {}
 
-ShrubberyCreationForm::ShrubberyCreationForm(string target):Form("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(string target):Form("ShrubberyCreationForm", 145, 137), _target(target), _isExec(false)
 {
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src):Form(src.getName(), src.getGsign(), src.getGexec()), _target(src.getTarget())
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src):Form(src.getName(), src.getGsign(), src.getGexec()), _target(src.getTarget()), _isExec(false)
 {
 }
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs)
 {
 	// copy target only make more sense for this class to my personal view 
-	// because the only difference between two shrubbery objects are the target name.
 	if (this != &rhs)
 		this->_target = rhs.getTarget();
 	return (*this);
@@ -50,10 +49,10 @@ string	ShrubberyCreationForm::getTarget(void) const
 
 std::ostream & ft_drawtree(int n, int w, int q, std::ostream & newFile)
 {
-	int p = 6;
+	int p = 25;
 	if (n)
 	{
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 10; i++)
 		{
 			for (int j = 0; j < w; j++)
 			{
@@ -64,7 +63,7 @@ std::ostream & ft_drawtree(int n, int w, int q, std::ostream & newFile)
 			}
 			newFile << endl;
 		}
-		ft_drawtree(n - 1, w + 2, q + 1, newFile);
+		ft_drawtree(n - 1, w + 2, q + 5, newFile);
 	}
 	else
 	{
@@ -85,16 +84,19 @@ std::ostream & ft_drawtree(int n, int w, int q, std::ostream & newFile)
 
 void	ShrubberyCreationForm::createfile(void) const
 {
+	cout << GRE << "[ShrubberyCreationForm]: successfully execute" << DEF << endl;
 	std::ofstream newFile(getTarget() + "_shrubbery");
 
-	ft_drawtree(3, 10, 0, newFile);
+	ft_drawtree(3, 50, 0, newFile);
 	newFile.close();
 }
 
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
-	if (getSigned() && executor.getGrade() > 0 && executor.getGrade() <= getGexec())
+	if (!getSigned() && executor.getGrade() > 0 && executor.getGrade() <= getGexec())
+		cout << YEL << "[ShrubberyCreationForm]: this form is not yet signed by "  << DEF << endl;
+	else if (getSigned() && executor.getGrade() > 0 && executor.getGrade() <= getGexec())
 		this->createfile();
 	else
-		cout << "sorry cannot execute, need at least " << getGexec() << endl;
+		cout << RED << "[ShrubberyCreationForm]: Sorry cannot execute, need at least " << getGexec() << DEF << endl;
 }

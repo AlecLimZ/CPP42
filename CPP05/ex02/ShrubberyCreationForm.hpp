@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 12:40:35 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/09 15:43:05 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/09 19:52:06 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 
 class ShrubberyCreationForm: public Form
 {
-	string _target;
+	string	_target;
+	bool	_isExec;
 	public:
 		//conanical for
 		ShrubberyCreationForm(void);
@@ -32,6 +33,7 @@ class ShrubberyCreationForm: public Form
 
 		// getter
 		string	getTarget(void) const;
+		bool	getExec(void) const;
 
 		//create a file
 		void	createfile(void) const;
