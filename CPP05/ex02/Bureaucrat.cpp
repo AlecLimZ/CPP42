@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:24:53 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/09 19:02:10 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:58:25 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,4 +128,12 @@ void	Bureaucrat::signForm(Form const & f)
 			<< f.getName() << " yet" << DEF << endl;
 	else
 		cout << RED << "[Bureaucrat::signForm]: " << this->getName() << " couldn't sign " << f.getName() << " because the grade is not in between 1 and " << f.getGsign() << "\n"DEF;
+}
+
+void	Bureaucrat::executeForm(Form const & form)
+{
+	if (!form.getSigned())
+		cout << RED << "[Bureaucrat::executeForm]: Cannot" << DEF << endl;
+	else
+		cout << GRE << "[Bureaucrat::executeForm]: " << this->getName() << " executed " << form.getName() << DEF << endl;
 }

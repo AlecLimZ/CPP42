@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:21:56 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/08 17:51:23 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/09 19:00:03 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ class	Bureaucrat
 		Bureaucrat & operator--(int);
 		Bureaucrat & operator--(void);
 
-		void signForm(Form const & f) const;
+		void signForm(Form const & f);
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs);

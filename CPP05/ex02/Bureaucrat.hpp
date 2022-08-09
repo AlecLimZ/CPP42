@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:21:56 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/09 10:42:50 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/09 18:49:19 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,22 @@
 # define RED	"\033[31m"
 # define YEL	"\033[33m"
 # define CYAN	"\033[36m"
+# define GRE	"\033[32m"
 
 # include <iostream>
 
 using std::cout;
 using std::endl;
+using std::string;
+
+class	Form;
 
 class	Bureaucrat
 {
-	std::string const 	_name;
+	string const 	_name;
 	int					_grade;
 	public:
-		Bureaucrat(std::string const n, int const g);
+		Bureaucrat(string const n, int const g);
 
 		Bureaucrat(void);
 		~Bureaucrat(void);
@@ -49,7 +53,7 @@ class	Bureaucrat
 		int	exception_handling(void) const;
 
 		// Accessors (getter & setters)
-		std::string	getName(void) const;
+		string	getName(void) const;
 		int			getGrade(void) const;
 
 		void	setGrade(int g);
@@ -59,6 +63,9 @@ class	Bureaucrat
 		Bureaucrat & operator++(void);
 		Bureaucrat & operator--(int);
 		Bureaucrat & operator--(void);
+
+		void signForm(Form const & f);
+		void executeForm(Form const & form);
 };
 
 std::ostream & operator<<(std::ostream & o, Bureaucrat const & rhs);
