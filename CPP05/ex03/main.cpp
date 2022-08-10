@@ -6,13 +6,11 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:21:33 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/10 16:28:09 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/10 18:59:17 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
+#include "Intern.hpp"
 
 void	ft_block(void)
 {
@@ -73,13 +71,11 @@ void	ft_robo(void)
 	delete f2;
 }
 
-void	ft_president(void)
+void	ft_test(Form *f1, Form *f2)
 {
 	Bureaucrat a("JackA", 150);
 	Bureaucrat b("JackB", 3);
 	Bureaucrat c("JackC", 20);
-	Form	*f1 = new PresidentialPardonForm("TargetA");
-	Form	*f2 = new PresidentialPardonForm("TargetB");
 	cout << *f1 << endl;
 	cout << *f2 << endl;
 	f1->execute(a);
@@ -98,9 +94,17 @@ void	ft_president(void)
 
 int main(void)
 {
-//	ft_block();
-//	ft_shrub();
-	ft_robo();
-//	ft_president();
+
+	Intern someRandomIntern1;
+	Intern someRandomIntern2;
+//	Form *rrf;
+
+//	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
+//	cout << *rrf << endl;
+	Form *rrf1 = someRandomIntern1.makeForm("presidential pardon", "2Bender2");
+	Form *rrf2 = someRandomIntern2.makeForm("robotomy request", "2Bender2");
+	cout << *rrf2 << endl;
+	cout << *rrf1 << endl;
+//	ft_test(rrf, rrf2);
 	return (0);
 }
