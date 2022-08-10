@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:21:33 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/10 18:59:17 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:50:36 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,16 +95,13 @@ void	ft_test(Form *f1, Form *f2)
 int main(void)
 {
 
-	Intern someRandomIntern1;
-	Intern someRandomIntern2;
+	Intern someRandomIntern;
 //	Form *rrf;
 
 //	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 //	cout << *rrf << endl;
-	Form *rrf1 = someRandomIntern1.makeForm("presidential pardon", "2Bender2");
-	Form *rrf2 = someRandomIntern2.makeForm("robotomy request", "2Bender2");
-	cout << *rrf2 << endl;
-	cout << *rrf1 << endl;
-//	ft_test(rrf, rrf2);
+	Form *rrf1 = someRandomIntern.makeForm("presidential pardon", "1Bender1");
+	Form *rrf2 = someRandomIntern.makeForm("presidential pardon", "2Bender2");
+	ft_test(rrf1, rrf2);
 	return (0);
 }
