@@ -6,11 +6,26 @@
 /*   By: leng-chu <leng-chu@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 16:55:08 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/10 19:47:17 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/10 19:56:11 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
+
+Intern::Intern(void){}
+
+Intern::~Intern(void){}
+
+Intern::Intern(Intern const & src)
+{
+	(void)src;
+}
+
+Intern & Intern::operator=(Intern const & rhs)
+{
+	(void)rhs;
+	return (*this);
+}
 
 Form * Intern::makeForm(string name, string target)
 {
