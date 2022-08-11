@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:48:44 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/10 17:18:05 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:36:34 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class Form
 		void	beSigned(Bureaucrat const & bur);
 
 		// exception
-		int		sign_handling(int g);
+		int		sign_handling(int g) const;
 
 		// execute
 		virtual void	execute(Bureaucrat const & executor) const = 0;

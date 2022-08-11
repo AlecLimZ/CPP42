@@ -6,7 +6,7 @@
 /*   By: leng-chu <leng-chu@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 15:42:46 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/10 16:07:41 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:15:17 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	PresidentialPardonForm::informZap(void) const
 void	PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned() && executor.getGrade() > 0 && executor.getGrade() <= getGexec())
-		cout << YEL << "[PresidentialCreationForm]: this form is not yet signed by "
+		cout << YEL << "[PresidentialCreationForm]: this form is not yet signed "
 			<< DEF << endl;
 	else if (getSigned() && executor.getGrade() > 0 && executor.getGrade() <= getGexec())
 		this->informZap();

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:48:44 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/09 17:50:18 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:34:14 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ class Form
 		void	beSigned(Bureaucrat const & bur);
 		
 		// exception
-		int		sign_handling(int g);
+		int		sign_handling(int g) const;
 };
 
 std::ostream & operator<<(std::ostream & o, Form const & rhs);

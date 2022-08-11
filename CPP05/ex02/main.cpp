@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:21:33 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/10 16:28:09 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:18:21 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,16 +36,31 @@ void	ft_shrub(void)
 	Form	*f2 = new ShrubberyCreationForm("TargetB");
 	cout << *f1 << endl;
 	cout << *f2 << endl;
-	f1->execute(a);
-	f1->execute(b);
-	f1->execute(c);
-	f1->beSigned(a);
-	f1->beSigned(b); // accept JackB's grade
-	f2->beSigned(c); // accept JackC's grade
+	f1->execute(a); // 150 is too low to execute
+	f1->execute(b); // can execute but cannot yet due to the form is not sign yet
+	f1->execute(c); // 145 is too low to execute
+	
+	a.executeForm(*f2); // cannot execute
+	b.executeForm(*f1); // cannot coz not yet signed
+	
+	f1->beSigned(a); // reject JackA
+	f1->beSigned(b); // accept JackB's grade to sign
+	f2->beSigned(c); // accept JackC's grade to sign
 	cout << *f1 << endl;
 	cout << *f2 << endl;
-	f1->execute(b); 
-	f2->execute(c); // cannot execute coz execute grade at least 137
+	f1->execute(b);  // success create a file with ASCII tree drawing
+	f2->execute(c); // cannot execute coz execute grade at least 137 even JackC's 145 can sign
+	cout << YEL << "\n===Check Bureaucrat's signForm===" << DEF << endl;
+	a.signForm(*f1);
+	a.signForm(*f2);
+	b.signForm(*f1);
+	c.signForm(*f2);
+
+	cout << YEL << "\n===Check Bureaucrat's executeForm===" << DEF << endl;
+	a.executeForm(*f1);
+	a.executeForm(*f2);
+	b.executeForm(*f1);
+	c.executeForm(*f2);
 	delete f1;
 	delete f2;
 }
@@ -62,13 +77,29 @@ void	ft_robo(void)
 	f1->execute(a);
 	f1->execute(b);
 	f1->execute(c);
+
+	a.executeForm(*f2);
+	b.executeForm(*f1);
+
 	f1->beSigned(a);
 	f1->beSigned(b); // accept JackB's grade
 	f2->beSigned(c); // accept JackC's grade
 	cout << *f1 << endl;
 	cout << *f2 << endl;
-	f1->execute(b); 
-	f2->execute(c); // cannot execute coz execute grade at least 137
+	f1->execute(b); // can execute at 50% success rate for the robo class.
+	f2->execute(c); // cannot execute coz execute grade at least 45
+
+	cout << YEL << "\n===Check Bureaucrat's signForm===" << DEF << endl;
+	a.signForm(*f1);
+	a.signForm(*f2);
+	b.signForm(*f1);
+	c.signForm(*f2);
+
+	cout << YEL << "\n===Check Bureaucrat's executeForm===" << DEF << endl;
+	a.executeForm(*f1);
+	a.executeForm(*f2);
+	b.executeForm(*f1);
+	c.executeForm(*f2);
 	delete f1;
 	delete f2;
 }
@@ -85,22 +116,40 @@ void	ft_president(void)
 	f1->execute(a);
 	f1->execute(b);
 	f1->execute(c);
+
+	a.executeForm(*f2);
+	b.executeForm(*f1);
+	
 	f1->beSigned(a);
 	f1->beSigned(b); // accept JackB's grade
 	f2->beSigned(c); // accept JackC's grade
 	cout << *f1 << endl;
 	cout << *f2 << endl;
-	f1->execute(b); 
-	f2->execute(c); // cannot execute coz execute grade at least 137
+	f1->execute(b); // JackB can execute
+	f2->execute(c); // cannot execute coz execute grade at least 5
+	cout << YEL << "\n===Check Bureaucrat's signForm===" << DEF << endl;
+	a.signForm(*f1);
+	a.signForm(*f2);
+	b.signForm(*f1);
+	c.signForm(*f2);
+
+	cout << YEL << "\n===Check Bureaucrat's executeForm===" << DEF << endl;
+	a.executeForm(*f1);
+	a.executeForm(*f2);
+	b.executeForm(*f1);
+	c.executeForm(*f2);
 	delete f1;
 	delete f2;
 }
 
 int main(void)
 {
-//	ft_block();
-//	ft_shrub();
+	ft_block();
+	ft_shrub();
+	ft_block();
 	ft_robo();
-//	ft_president();
+	ft_block();
+	ft_president();
+	ft_block();
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/09 13:02:27 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/10 14:23:08 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:14:21 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ std::ostream & ft_drawtree(int n, int w, int q, std::ostream & newFile)
 
 void	ShrubberyCreationForm::createfile(void) const
 {
-	cout << GRE << "[ShrubberyCreationForm]: successfully execute" << DEF << endl;
-	std::ofstream newFile(getTarget() + "_shrubbery");
+	string tmp = getTarget() + "_shrubbery";
+	cout << GRE << "[ShrubberyCreationForm]: successfully create file " << tmp << DEF << endl;
+	std::ofstream newFile(tmp);
 
 	ft_drawtree(3, 50, 0, newFile);
 	newFile.close();
@@ -94,7 +95,7 @@ void	ShrubberyCreationForm::createfile(void) const
 void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned() && executor.getGrade() > 0 && executor.getGrade() <= getGexec())
-		cout << YEL << "[ShrubberyCreationForm]: this form is not yet signed by "  << DEF << endl;
+		cout << YEL << "[ShrubberyCreationForm]: this form is not yet signed "  << DEF << endl;
 	else if (getSigned() && executor.getGrade() > 0 && executor.getGrade() <= getGexec())
 		this->createfile();
 	else

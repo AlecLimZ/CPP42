@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:21:33 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/09 17:51:53 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 13:32:04 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,18 @@ void	ft_block(void)
 void	ft_testform(void)
 {
 	cout << YEL"\n===Constructors==="DEF << endl;
-	Form a;
+	Form a; // default
 	cout << a << endl;
-	Form b("FormB", -100, 100);
+	Form b("FormB", -100, 100); // -100 is too high than 1, throw
 	cout << b << endl;
-	Form c("FormC", 100, 200);
+	Form c("FormC", 100, 200); // 200 is too low than 150, throw
 	cout << c << endl;
 	cout << YEL"\n===Copy Constructor==="DEF << endl;
-	Form d = Form("FormD", -100, 200);
+	Form d = Form("FormD", -100, 200); // The new D throw as -100 too high and 200 is too low
 	cout << d << endl;
 	cout << YEL"\n===Copy Assignment==="DEF << endl;
-	a = d;
+	a = d; // throw and prevent assignment the status of the signed.
+	cout << a << endl;
 }
 
 void	ft_testf_b(void)
@@ -62,11 +63,19 @@ void	ft_testf_b(void)
 	// should not able to sign even b's grade is between 1~150 as the form's grade requirement itself is out of bound.
 	t2.beSigned(b);
 	cout << t2 << endl;
+
+	a.signForm(t);
+	a.signForm(t2);
+	b.signForm(t);
+	b.signForm(t2);
 }
 
 int main(void)
 {
-//	ft_testform();
+	ft_block();
+	ft_testform();
+	ft_block();
 	ft_testf_b();
+	ft_block();
 	return (0);
 }

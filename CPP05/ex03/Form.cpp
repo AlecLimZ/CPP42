@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 13:50:32 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/09 19:28:41 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:55:27 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ Form & Form::operator=(Form const & rhs)
 	if (this != &rhs)
 	{
 		// set 1 as i want to check both grade to sign & grade to execute
-		if (!sign_handling(1))
-			this->_signed = rhs.getSigned();
+		if (!rhs.sign_handling(1))
+			setSigned(rhs.getSigned());
 	}
 	return (*this);
 }
@@ -73,11 +73,14 @@ const char * Form::GradeTooLowException::what() const throw()
 void	Form::beSigned(Bureaucrat const & bur)
 {
 	if (!this->sign_handling(bur.getGrade()))
+	{
+		setSigned(true);
 		cout << GRE << "[Form::beSigned]: " << bur.getName()
 			<< "'s grade is accepted to sign " << this->getName() << DEF << endl;
+	}
 }
 
-int	Form::sign_handling(int g)
+int	Form::sign_handling(int g) const
 {
 	int ret = 0;
 	try
@@ -102,17 +105,13 @@ int	Form::sign_handling(int g)
 						throw (Form::GradeTooLowException());
 				}
 				else
-				{
 					cout << RED << "\n[Grade Required to execute]: " << e.what() << DEF << endl;
-					this->_signed = false;
-				}
 				ret = 1;
 			}
 		}
 		catch (std::exception & e)
 		{
 				cout << RED << "[Grade Required to execute]: " << e.what() << DEF << endl;
-				this->_signed = false;
 				ret = 1;
 		}
 		if (ret == 0)
@@ -121,13 +120,11 @@ int	Form::sign_handling(int g)
 				throw (Form::GradeTooHighException());
 			if (g > getGsign())
 				throw (Form::GradeTooLowException());
-			this->_signed = true;
 		}
 	}
 	catch (std::exception & e)
 	{
 		cout << RED << endl << e.what() << DEF << endl;
-		this->_signed = false;
 		ret = 1;
 	}
 	return (ret);

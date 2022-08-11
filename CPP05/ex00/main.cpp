@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:21:33 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/08 15:21:45 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:13:05 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int main(void)
 	ft_block();
 
 	cout << YEL"===Copy Assignment==="DEF << endl;
-	a = b; // throw
+	a = b; // throw, prevent the assignment
 	cout << a << endl;
 	cout << b << endl;
 	
@@ -67,6 +67,6 @@ int main(void)
 	ft_block();
 	
 	cout << YEL"===Copy Constructor==="DEF << endl;
-	Bureaucrat e(a); // copy throw
+	Bureaucrat e(a); // copy throw, prevent and assign the default 150
 	cout << "Object e status after copy object a:\n" <<  e << endl;
 }

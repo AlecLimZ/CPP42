@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/06 15:24:53 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/09 10:43:03 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 12:12:26 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ Bureaucrat::Bureaucrat(std::string const n, int const g): _name(n), _grade(g)
 
 Bureaucrat::Bureaucrat(Bureaucrat const & src): _name(src.getName()), _grade(src.getGrade())
 {
-	exception_handling();
+	if(exception_handling())
+		_grade = 150;
 }
 
 Bureaucrat & Bureaucrat::operator=(Bureaucrat const & rhs)

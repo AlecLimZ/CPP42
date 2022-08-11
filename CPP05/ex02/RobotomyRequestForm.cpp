@@ -6,7 +6,7 @@
 /*   By: leng-chu <leng-chu@42kl.edu.my>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/10 14:24:55 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/10 16:43:48 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/11 14:13:53 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void RobotomyRequestForm::robot(void) const
 void	RobotomyRequestForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned() && executor.getGrade() > 0 && executor.getGrade() <= getGexec())
-		cout << YEL << "[RobotomyRequestForm]: this form is not yet signed by "
+		cout << YEL << "[RobotomyRequestForm]: this form is not yet signed"
 			<< DEF << endl;
 	else if (getSigned() && executor.getGrade() > 0 && executor.getGrade() <= getGexec())
 		this->robot();
