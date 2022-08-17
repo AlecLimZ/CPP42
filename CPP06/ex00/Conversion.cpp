@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 13:26:09 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/17 16:35:01 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/17 18:16:14 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,20 @@ Conversion::operator char(void)
 	cout << "char: ";
 	try
 	{
+		if (!is_number(getInput()))
+			throw (1);
+		if (getType() < 1 || getType() > 126)
+			throw (string)"Non displayable";
 		c = static_cast<char>(getType());
 		if (!c)
-			throw (string)"impossible";
-		if (!isprint(c))
-			throw (string)"Non displayable";
+			throw (1);
 		cout << c << endl;
 	}
 	catch (string e)
 	{
 		cout << e << endl;
 	}
-	catch (std::exception & e)
+	catch (...)
 	{
 		cout << "impossible" << endl;
 	}
@@ -85,19 +87,16 @@ Conversion::operator int(void)
 	{
 		// this is not neccesary but i add this so that each list shows
 		// impossible for fun :D
-		stoi(getInput());
-
+	//	stoi(getInput());
+		if (!is_number(getInput()))
+			throw (1);
 		if (getType() < std::numeric_limits<int>::min()
 			|| getType() > std::numeric_limits<int>::max())
-			throw (string)"impossible";
+			throw (1);
 		tmp = static_cast<int>(getType());
 		cout << tmp << endl;
 	}
-	catch (string e)
-	{
-		cout << e << endl;
-	}
-	catch (std::exception & e)
+	catch (...)
 	{
 		cout << "impossible" << endl;
 	}
@@ -110,21 +109,14 @@ Conversion::operator float(void)
 	cout << "float: ";
 	try
 	{
-		if (getType() > std::numeric_limits<float>::max()
-			|| getType() < std::numeric_limits<float>::min())
-			throw (string)"impossible";
+		if (!is_number(getInput()))
+			throw 1;
 		tmp = static_cast<float>(getType());
-		if (isnan(tmp))
-			throw (string)"nanf";
-		cout << std::fixed << tmp << endl;
+		cout << std::fixed << std::setprecision(1) << tmp << "f\n";
 	}
-	catch (string e)
+	catch (...)
 	{
-		cout << e << endl;
-	}
-	catch (std::exception & e)
-	{
-		cout << "impossible" << endl;
+		cout << "nanf" << endl;
 	}
 	return (tmp);
 }
@@ -155,6 +147,6 @@ void	Conversion::stold(void)
 	}
 	catch (std::exception & e)
 	{
-		cout << "Invalid argument input: " << e.what() << endl;
+		(void)e;
 	}
 }

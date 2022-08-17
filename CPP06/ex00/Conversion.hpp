@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 13:12:11 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/17 15:38:13 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/17 17:39:57 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,7 @@ class Conversion
 		//exception handling
 		void	e_catch(void);
 };
+
+bool is_number(const std::string & s);
 
 #endif
