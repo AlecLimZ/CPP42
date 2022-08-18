@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 13:26:09 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/18 11:21:27 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/18 12:38:59 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ Conversion & Conversion::operator=(Conversion const & rhs)
 
 Conversion::Conversion(char *s):_input(s), _type(0)
 {
-	stold();
-	this->display();	
 }
 
 string Conversion::getInput(void) const
@@ -57,15 +55,12 @@ Conversion::operator char(void)
 {
 	char c = '\0';
 	cout << "char: ";
-	int dot = 0;
-	for (int i = 0; getInput()[i]; i++)
-		if (getInput()[i] == '.')
-			dot++;
 	try
 	{
-		if (!is_number(getInput()) && !is_float(getInput()))
+		stold();
+		if (!is_number(getInput()))
 			throw (1);
-		if (getType() < 32 || getType() > 126 || dot > 0)
+		if (getType() < 32 || getType() > 126 || getType() > trunc(getType()))
 			throw (string)"Non displayable";
 		c = static_cast<char>(getType());
 		if (!c)
@@ -89,7 +84,7 @@ Conversion::operator int(void)
 	cout << "int: ";
 	try
 	{
-		if (!is_number(getInput()) && !is_float(getInput()))
+		if (!is_number(getInput()))
 			throw (1);
 		if (getType() < std::numeric_limits<int>::min()
 			|| getType() > std::numeric_limits<int>::max() || isnan(getType()))
@@ -110,7 +105,7 @@ Conversion::operator float(void)
 	cout << "float: ";
 	try
 	{
-		if (!is_number(getInput()) && check_inf() == "" && !is_float(getInput()))
+		if (!is_number(getInput()) && check_inf() == "")
 			throw 1;
 		tmp = static_cast<float>(getType());
 		cout << std::fixed << std::setprecision(1) << tmp << "f\n";
@@ -128,7 +123,7 @@ Conversion::operator double(void)
 	cout << "double: ";
 	try
 	{
-		if (!is_number(getInput()) && check_inf() == "" && !is_float(getInput()))
+		if (!is_number(getInput()) && check_inf() == "")
 			throw 1;
 		tmp = static_cast<double>(getType());
 		cout << std::fixed << std::setprecision(1) << tmp << endl;
@@ -185,37 +180,28 @@ bool Conversion::is_number(const std::string & s)
 	int dot = 0;
 	int e = 0;
 	int i = 0;
+	int f = 0;
+	int len = s.length();
 	if (s[0] == '-' || s[0] == '+')
 		i++;
-	while (s[i])
+	if (s[len - 1] == 'f')
+		len--;
+
+	while (i < len)
 	{
-		if (!isdigit(s[i]) && s[i] != '.')
+		if (!isdigit(s[i]) && s[i] != '.' && s[i] != 'f')
 			e++;
 		if (s[i] == '.')
 			dot++;
-		i++;
-	}
-	if (!(s[0] != '.' && s[s.length() - 1] != '.' && dot <= 1 && e == 0))
-		return (0);
-	return (1);
-}
-
-bool Conversion::is_float(const std::string & s)
-{
-	int f = 0;
-	try
-	{
-		std::stold(s);
-	}
-	catch (std::exception & e)
-	{
-		(void)e;
-		return (0);
-	}
-	for (int i = 0; s[i]; i++)
 		if (s[i] == 'f')
 			f++;
-	if (f > 1)
+		i++;
+	}
+	if (s[s.length() - 1] == 'f')
+		len = s.length() - 2;
+	else
+		len = s.length() - 1;
+	if (!(s[0] != '.' && s[len] != '.' && dot <= 1 && e == 0 && f == 0))
 		return (0);
-	return 1;
+	return (1);
 }
