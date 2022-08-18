@@ -1,8 +1,8 @@
 NAME		=	main
-SRC			=	main.cpp Data.cpp Serial.cpp
+SRC			=	main.cpp Identitfy.cpp
 OBJ			=	$(SRC:%.cpp=%.o)
-HEADER		=	-I.
-CXXFLAGS	+=	-Wall -Wextra -Werror -pedantic -std=c++98 $(HEADER) -fsanitize=address
+HEAD		=	-I.
+CXXFLAGS	+=	-Wall -Wextra -Werror $(HEAD) -pedantic -fsanitize=address
 
 all:		$(NAME)
 
@@ -17,4 +17,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all fclean clean re
+.PHONY:		all clean fclean re
