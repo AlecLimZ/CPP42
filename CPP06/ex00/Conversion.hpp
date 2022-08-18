@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 13:12:11 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/17 17:39:57 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/18 11:10:21 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,22 @@ class Conversion
 		operator int(void);
 		operator float(void);
 		operator char(void);
+		operator double(void);
 
 		//display at constructor
 		int	display(void);
 
 		//exception handling
 		void	e_catch(void);
-};
 
-bool is_number(const std::string & s);
+		//+inff, -inff, +inf & +inf
+		string check_inf(void);
+
+		// check is number or not
+		bool is_number(const std::string & s);
+
+		//check if input is float type
+		bool is_float(const std::string & s);
+};
 
 #endif
