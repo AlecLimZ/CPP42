@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 13:58:09 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/22 15:04:27 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/22 17:53:39 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ using std::endl;
 using std::string;
 
 template <typename T>
-void	ft_printelem(T & elem)
+void	ft_printelem(T const & elem)
 {
 	cout << elem << endl;
 }
 
 template <typename T>
-void	iter(T array[], unsigned int len, void (*fptr)(T & elem))
+void	iter(T array[], unsigned int len, void (*fptr)(T const & elem))
 {
 	for (unsigned int i = 0; i < len; i++)
 		fptr(array[i]);
