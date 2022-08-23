@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 13:59:03 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/22 15:00:20 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/23 12:50:19 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ int main(void)
 	::iter<float>(d, 4, ::ft_printelem);	
 	
 	// double
-	double e[] = {11.111, -24.22, 0.333, 77.77};
-	ft_type("double");
+	double const e[] = {11.111, -24.22, 0.333, 77.77};
+	ft_type("double const");
 	::iter<double>(e, 4, ::ft_printelem);	
 	
 	// bool
