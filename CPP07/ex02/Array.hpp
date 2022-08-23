@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:06:44 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/23 16:00:02 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/23 18:03:41 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,4 +171,22 @@ std::ostream & operator<<(std::ostream & o, Array<T> const & rhs) // this is con
 	return (o);
 }
 
+// Array<bool> will call this
+std::ostream & operator<<(std::ostream & o, Array<bool> const & rhs)
+{
+	if (rhs.size() < 1)
+		o << "This is empty Array!" << endl;
+	for (size_t i = 0; i < rhs.size(); i++)
+		o << "Array[" << i << "]: " << std::boolalpha << rhs[i] << endl;
+	try
+	{
+		for (size_t i = 0; i < rhs.size() + 42; i++)
+			rhs[i];
+	}
+	catch (std::exception & e)
+	{
+		cout << e.what() << endl;
+	}
+	return (o);
+}
 #endif

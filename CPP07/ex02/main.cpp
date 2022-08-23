@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/22 15:07:23 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/08/23 15:51:54 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/08/23 18:04:56 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,6 +151,42 @@ void test_string(void)
 	}
 }
 
+void test_bool(void)
+{
+	try
+	{
+		bool box[] = {
+			true, false,
+		};
+
+		Array<bool> Abool; // constructor with no parameter
+		::name("Abool");
+		cout << Abool << endl;
+
+		Array<bool> Bbool(::rs); // constructor with parameter
+		::name("Bbool");
+		for (int i = 0; i < ::rs; i++)
+			Bbool[i] = box[rand() % 2]; // call non-const operator[]
+		cout << Bbool << endl;
+
+		Abool = Bbool; // call copy assignment
+		::name("Abool");
+		cout << Abool << endl;
+
+		Array<bool> Cbool(Abool); // call copy constructor
+		::name("Cbool");
+		cout << Cbool << endl;
+
+		// will throw error due to it trys to access the index out of size range
+		for (int i = 0; i < ::rs + 42; i++)
+			Cbool[i];
+	}
+	catch (std::exception & e)
+	{
+		cout << e.what() << endl;
+	}
+}
+
 int main(void)
 {
 	srand(time(0));
@@ -165,5 +201,8 @@ int main(void)
 	::block();
 	::rs = rand() % 5 + 1;
 	test_string();
+	::block();
+	::rs = rand() % 5 + 1;
+	test_bool();
 	return (0);
 }
