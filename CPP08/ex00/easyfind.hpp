@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:05:15 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/02 16:55:11 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/03 11:28:50 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,13 @@
 # define BWHITE	"\033[1m\033[37m"
 
 # include <iostream>
-# include <vector>
-# include <array>
-# include <deque>
-# include <forward_list>
-# include <list>
-# include <algorithm>
+
+// Sequence containers
+# include <vector> // dynamic array
+# include <array> // static array
+# include <deque> // double-end queue
+# include <forward_list> // singly-linked list
+# include <list> // doubly-linked list
 
 using std::cout;
 using std::endl;
