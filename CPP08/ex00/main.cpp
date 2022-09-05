@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:02:30 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/03 11:28:38 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:11:21 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ int main(void)
 	vector<int> vec;
 	for (int i = 0; i < 10; ++i)
 		vec.push_back(i + 5);
-	std::array<int, 5> arr = {5, 11, 55, 10, 6};
+	std::array<int, 10> arr = {5, 6, 7, 8, 9, 10, 11, 12, 13, 14};
 	std::deque<int> deq(arr.begin(), arr.end());
 	std::forward_list<int> flist(vec.begin(), vec.end());
 	std::list<int> list1(flist.begin(), flist.end());
 
-	int v = 10;
+	int v = 14;
 	ft_checkfind(easyfind<vector<int> >(vec, v), "easyfind(vector)");
 	ft_checkfind(std::count(vec.begin(), vec.end(), v), "std::count(vector)");
-	ft_checkfind(easyfind<std::array<int, 5> >(arr, v), "easyfind(array)");
+	ft_checkfind(easyfind<std::array<int, 10> >(arr, v), "easyfind(array)");
 	ft_checkfind(std::count(arr.begin(), arr.end(), v), "std::count(array)");
 	ft_checkfind(easyfind<std::deque<int> >(deq, v), "easyfind(deque)");
 	ft_checkfind(std::count(deq.begin(), deq.end(), v), "std::count(deque)");
@@ -52,7 +52,7 @@ int main(void)
 	v = 4;
 	ft_checkfind(easyfind<vector<int> >(vec, v), "easyfind(vector)");
 	ft_checkfind(std::count(vec.begin(), vec.end(), v), "std::count(vector)");
-	ft_checkfind(easyfind<std::array<int, 5> >(arr, v), "easyfind(array)");
+	ft_checkfind(easyfind<std::array<int, 10> >(arr, v), "easyfind(array)");
 	ft_checkfind(std::count(arr.begin(), arr.end(), v), "std::count(array)");
 	ft_checkfind(easyfind<std::deque<int> >(deq, v), "easyfind(deque)");
 	ft_checkfind(std::count(deq.begin(), deq.end(), v), "std::count(deque)");

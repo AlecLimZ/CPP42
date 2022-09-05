@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:36:44 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/03 11:58:35 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/05 14:49:58 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <iostream>
 # include <vector>
+# include <map>
+# include <algorithm> // to use min_element & max_element
 
 using std::cout;
 using std::endl;
@@ -29,13 +31,22 @@ class Span
 		//conanical form
 		Span(void);
 		~Span(void);
-		explicit Span(Span const & src);
+		Span(Span const & src);
 		Span & operator=(Span const & rhs);
 		Span(unsigned int n);
 
-		void addNumber();
+		void addNumber(long int i);
 		long int shortestSpan();
 		long int longestSpan();
+		void fillSpan(int n);
+
+		//setter & getter
+		void	setInt(unsigned int i);
+		void	setVector(vector <int> i);
+		unsigned int	getInt(void) const;
+		vector<int> getVector(void) const;
 };
+
+std::ostream & operator<<(std::ostream & o, Span const & rhs);
 
 #endif

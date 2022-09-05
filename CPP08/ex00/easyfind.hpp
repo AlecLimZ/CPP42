@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 14:05:15 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/03 11:28:50 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/05 13:12:46 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 
 # include <iostream>
 
+// STL algorithm
+# include <algorithm> // to use std::find
+
 // Sequence containers
 # include <vector> // dynamic array
 # include <array> // static array
@@ -48,10 +51,10 @@ using std::vector;
 template <typename T>
 bool	easyfind(T & val, int find)
 {
-	for (typename T::iterator i = val.begin(); i != val.end(); ++i)
-		if (*i == find)
-			return (true);
-	return (false);
+	if (std::find(val.begin(), val.end(), find) != val.end())
+		return (true);
+	else
+		return (false);
 }
 
 #endif

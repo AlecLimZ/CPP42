@@ -1,5 +1,5 @@
 NAME		=	main
-SRC			=	main.cpp
+SRC			=	main.cpp Span.cpp
 OBJ			=	$(SRC:%.cpp=%.o)
 H			=	-I.
 HFILE		=	Span.hpp
@@ -8,7 +8,7 @@ CXXFLAGS	+=	-Wall -Wextra -Werror -pedantic -std=c++98 $(H)
 all:		$(NAME)
 
 $(OBJ):		$(SRC) $(HFILE)
-			$(CXX) $(CXXFLAGS) -c $< 
+#			$(CXX) $(CXXFLAGS) -c $(SRC)
 
 $(NAME):	$(OBJ)
 			$(CXX) $(CXXFLAGS) $^ -o $@ -fsanitize=address
