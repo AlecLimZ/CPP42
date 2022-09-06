@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:36:44 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/05 14:49:58 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/06 11:12:28 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,10 @@ class Span
 		void	setVector(vector <int> i);
 		unsigned int	getInt(void) const;
 		vector<int> getVector(void) const;
+
+		//helper
+		static std::pair<long, long> pairmap(long x);
+		static std::pair<long, long> submap(std::pair<const long, long> & x, std::pair<const long, long> & y);
 };
 
 std::ostream & operator<<(std::ostream & o, Span const & rhs);

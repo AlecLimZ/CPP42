@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 10:26:12 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/05 16:16:20 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/06 11:34:35 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,51 +69,63 @@ void	Span::addNumber(long int i)
 
 long int Span::shortestSpan()
 {
-	vector<int>::iterator a, b;
-	std::map<long, long> mymap;
+	std::map<long, long> map, map3;
+	std::transform(_span.begin(), _span.end(), std::inserter(map, map.end()), pairmap);
 	try {
 		if (this->_span.empty())
 			throw static_cast<std::string>("Span is empty!");
 		if (this->_span.size() == 1)
 			throw static_cast<std::string>("Span has only one element!");
-		for (a = _span.begin(); a != _span.end(); a++)
-			for (b = a + 1; b != _span.end(); b++)
-				mymap.insert(std::pair<long, long>(abs(static_cast<long>(*a) - static_cast<long>(*b)), 'a'));
+		std::map<long, long>::iterator itm = map.begin();
+		std::map<long, long> map2(++itm, map.end());
+		std::transform(map2.begin(), map2.end(), map.begin(), std::inserter(map3, map3.end()), submap);
 	}
 	catch (std::string x) {
 		cout << "[shortestSpan]: " << x << endl;
 		exit(1);
 	}
-	std::map<long, long>::iterator it = mymap.begin();
-	return (it->first);
+	std::map<long, long>::iterator min = map3.begin();
+	return (min->first);
 }
 
 long int Span::longestSpan()
 {
-	vector<int>::iterator a, b;
-	std::map<long, long> mymap;
+	long result = 0;
 	try {
 		if (this->_span.empty())
 			throw static_cast<std::string>("Span is empty!");
 		if (this->_span.size() == 1)
 			throw static_cast<std::string>("Span has only one element!");
-		for (a = _span.begin(); a != _span.end(); a++)
-			for (b = a + 1; b != _span.end(); b++)
-				mymap.insert(std::pair<long, long>(abs(static_cast<long>(*a) - static_cast<long>(*b)), 'a'));
+		//for (a = _span.begin(); a != _span.end(); a++)
+		//	for (b = a + 1; b != _span.end(); b++)
+		//		mymap.insert(std::pair<long, long>(abs(static_cast<long>(*a) - static_cast<long>(*b)), 'a'));
+		long min = *min_element(this->_span.begin(), this->_span.end());
+		long max = *max_element(this->_span.begin(), this->_span.end());
+		result = abs(max - min);
 	}
 	catch (std::string x) {
-		cout << "[shortestSpan]: " << x << endl;
+		cout << "[longestSpan]: " << x << endl;
 		exit(1);
 	}
-	std::map<long, long>::iterator it = mymap.end();
-	--it;
-	return (it->first);
+	//std::map<long, long>::iterator it = mymap.end();
+	//--it;
+	return (result);
 }
 
 void	Span::fillSpan(int n)
 {
 	srand(time(0));
 	(void)n;
+}
+
+std::pair<long, long> Span::pairmap(long x)
+{
+	return (std::make_pair(x, 1));
+}
+
+std::pair<long, long> Span::submap(std::pair<const long, long> & x, std::pair<const long, long> & y)
+{
+	return (std::make_pair(abs(x.first - y.first), 1));
 }
 
 std::ostream & operator<<(std::ostream & o, Span const & rhs)
