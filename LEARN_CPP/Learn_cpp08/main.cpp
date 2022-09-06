@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/24 08:59:02 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/02 13:23:48 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/06 17:29:45 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 #include <set>
 #include <fstream>
 
+using std::array;
 using std::endl;
 using std::cout;
 using std::cin;
@@ -37,22 +38,25 @@ using std::begin;
 using std::end;
 using std::stack;
 
-class IOperation;
-
-void displayInt(int i)
+class MyIterator : public std::iterator<std::input_iterator_tag, int>
 {
-	cout << i << endl;
-}
+	int *p;
+	public:
+		MyIterator(int *x): p(x) {}
+		MyIterator(const MyIterator & mit) : p(mit.p) {}
+		MyIterator & operator++() { ++p; return *this; }
+		MyIterator operator++(int) { MyIterator tmp(*this); operator++(); return tmp; }
+		bool operator==(const MyIterator & rhs) const { return p == rhs.p; }
+		bool operator!=(const MyIterator & rhs) const { return p != rhs.p; }
+		int & operator * () { return *p;}
+};
 
 int main(void)
 {
-	list<int> lst;
-
-	lst.push_back(10);
-	lst.push_back(23);
-	lst.push_back(3);
-	lst.push_back(17);
-	lst.push_back(20);
-
-	for_each(lst.begin(), lst.end(), displayInt);
+	int numbers[] = {10, 20, 30, 40, 50};
+	MyIterator from(numbers);
+	MyIterator until(numbers+5);
+	for (MyIterator it = from; it != until; it++)
+		cout << *it << ' ';
+	cout << endl;
 }

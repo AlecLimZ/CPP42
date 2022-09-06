@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 10:26:12 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/06 11:34:35 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/06 18:53:23 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,6 @@ long int Span::longestSpan()
 			throw static_cast<std::string>("Span is empty!");
 		if (this->_span.size() == 1)
 			throw static_cast<std::string>("Span has only one element!");
-		//for (a = _span.begin(); a != _span.end(); a++)
-		//	for (b = a + 1; b != _span.end(); b++)
-		//		mymap.insert(std::pair<long, long>(abs(static_cast<long>(*a) - static_cast<long>(*b)), 'a'));
 		long min = *min_element(this->_span.begin(), this->_span.end());
 		long max = *max_element(this->_span.begin(), this->_span.end());
 		result = abs(max - min);
@@ -107,15 +104,26 @@ long int Span::longestSpan()
 		cout << "[longestSpan]: " << x << endl;
 		exit(1);
 	}
-	//std::map<long, long>::iterator it = mymap.end();
-	//--it;
 	return (result);
 }
 
-void	Span::fillSpan(int n)
+void	Span::fillSpan(vector<int>::iterator st, vector<int>::iterator fa)
 {
-	srand(time(0));
-	(void)n;
+	try
+	{
+		while (st != fa)
+		{
+			if (this->_N == 0)
+				throw (1);
+			this->_span.insert(this->_span.end(), *st);
+			this->_N--;
+			st++;
+		}
+	}
+	catch (...)
+	{
+		cout << "Sorry the Span is full!" << endl;
+	}
 }
 
 std::pair<long, long> Span::pairmap(long x)
@@ -128,10 +136,27 @@ std::pair<long, long> Span::submap(std::pair<const long, long> & x, std::pair<co
 	return (std::make_pair(abs(x.first - y.first), 1));
 }
 
+void Span::fillRandofSize(int i)
+{
+	srand(time(0));
+	for (int j = 0; j < i; j++)
+		addNumber((rand() % (i / 3)) - (i / 4));
+}
+
+vector<int>::iterator Span::getBegin(void)
+{
+	return (this->_span.begin());
+}
+
+vector<int>::iterator Span::getEnd(void)
+{
+	return (this->_span.end());
+}
+
 std::ostream & operator<<(std::ostream & o, Span const & rhs)
 {
 	vector<int> tmp = rhs.getVector();
-	o << "Balance int: " << rhs.getInt() << endl;
+	o << "Balance of empty slots: " << rhs.getInt() << endl;
 	o << "Vector: ";
 	for (vector<int>::iterator it = tmp.begin(); it != tmp.end(); it++)
 		o << *it << " ";
