@@ -6,13 +6,13 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:38:18 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/06 18:51:56 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/08 11:45:46 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 
-int main(void)
+int main(int ac, char **av)
 {
 	int csize = 10000;
 	Span sp = Span(5);
