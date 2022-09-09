@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/05 10:26:12 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/06 18:53:23 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:48:33 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void	Span::addNumber(long int i)
 	}
 	catch (...)
 	{
-		cout << "Sorry the Span is full!" << endl;
+		cout << RED << "Sorry the Span is full!" << DEF << endl;
 	}
 }
 
@@ -81,7 +81,7 @@ long int Span::shortestSpan()
 		std::transform(map2.begin(), map2.end(), map.begin(), std::inserter(map3, map3.end()), submap);
 	}
 	catch (std::string x) {
-		cout << "[shortestSpan]: " << x << endl;
+		cout << RED << "[shortestSpan]: " << x << DEF << endl;
 		exit(1);
 	}
 	std::map<long, long>::iterator min = map3.begin();
@@ -101,7 +101,7 @@ long int Span::longestSpan()
 		result = abs(max - min);
 	}
 	catch (std::string x) {
-		cout << "[longestSpan]: " << x << endl;
+		cout << RED << "[longestSpan]: " << x << DEF << endl;
 		exit(1);
 	}
 	return (result);
@@ -122,7 +122,7 @@ void	Span::fillSpan(vector<int>::iterator st, vector<int>::iterator fa)
 	}
 	catch (...)
 	{
-		cout << "Sorry the Span is full!" << endl;
+		cout << RED << "Sorry the Span is full!" << DEF << endl;
 	}
 }
 
@@ -136,11 +136,20 @@ std::pair<long, long> Span::submap(std::pair<const long, long> & x, std::pair<co
 	return (std::make_pair(abs(x.first - y.first), 1));
 }
 
-void Span::fillRandofSize(int i)
+void Span::fillRandofSize(long i)
 {
 	srand(time(0));
-	for (int j = 0; j < i; j++)
-		addNumber((rand() % (i / 3)) - (i / 4));
+	for (long j = 0; j < i; j++)
+	{
+		if (i > 20)
+			addNumber((rand() % (i / 3)) - (i / 4));
+		else if (i >= 10)
+			addNumber((rand() % i) - 5);
+		else if (i >= 5)
+			addNumber((rand() % i) - 2);
+		else
+			addNumber((rand() % i));
+	}
 }
 
 vector<int>::iterator Span::getBegin(void)
@@ -156,10 +165,10 @@ vector<int>::iterator Span::getEnd(void)
 std::ostream & operator<<(std::ostream & o, Span const & rhs)
 {
 	vector<int> tmp = rhs.getVector();
-	o << "Balance of empty slots: " << rhs.getInt() << endl;
+	o << YLW << "Balance of empty slots: " << rhs.getInt() << endl;
 	o << "Vector: ";
 	for (vector<int>::iterator it = tmp.begin(); it != tmp.end(); it++)
 		o << *it << " ";
-	o << endl;
+	o << DEF << endl;
 	return (o);
 }

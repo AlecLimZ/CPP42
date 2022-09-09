@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:36:44 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/06 18:13:21 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:43:40 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,25 @@
 # include <map>
 # include <algorithm> // to use min_element & max_element
 # include <iterator>
+
+# define DEF    "\033[0m"
+# define BLK	"\033[30m"
+# define RED	"\033[31m"
+# define GRN	"\033[32m"
+# define YLW	"\033[33m"
+# define BLUE	"\033[34m"
+# define MAG	"\033[35m"
+# define CYAN	"\033[36m"
+# define WHITE	"\033[37m"
+
+# define BBLK	"\033[1m\033[30m"
+# define BRED	"\033[1m\033[31m"
+# define BGRN	"\033[1m\033[32m"
+# define BYLW	"\033[1m\033[33m"
+# define BBLUE	"\033[1m\033[34m"
+# define BMAG	"\033[1m\033[35m"
+# define BCYAN	"\033[1m\033[36m"
+# define BWHITE	"\033[1m\033[37m"
 
 using std::cout;
 using std::endl;
@@ -56,7 +75,7 @@ class Span
 		static std::pair<long, long> submap(std::pair<const long, long> & x, std::pair<const long, long> & y);
 
 		//generate random
-		void fillRandofSize(int i);
+		void fillRandofSize(long i);
 };
 
 std::ostream & operator<<(std::ostream & o, Span const & rhs);

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:05:51 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/09 10:01:52 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:52:02 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(void)
 {
-	cout << "=====My MutantStack=====" << endl;
+	cout << GRN << "=====My MutantStack=====" << endl;
 	MutantStack<int> mstack;
 	mstack.push(5);
 	mstack.push(17);
@@ -37,7 +37,7 @@ int main(void)
 	}
 	std::stack<int> s(mstack);
 	
-	cout << "=====My MutantStack=====" << endl;
+	cout << CYAN "=====Vector=====" << endl;
 	vector<int> vstack;
 	vstack.push_back(5);
 	vstack.push_back(17);
@@ -60,7 +60,7 @@ int main(void)
 	}
 	std::vector<int> sv(vstack);
 
-	cout << "=====LIST=====" << endl;
+	cout << YLW "=====LIST=====" << endl;
 	std::list<int> listack;
 	listack.push_back(5);
 	listack.push_back(17);

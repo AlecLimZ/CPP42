@@ -6,12 +6,31 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 11:57:48 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/09 09:58:48 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/09 13:49:53 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MUTANTSTACK_HPP
 # define MUTANTSTACK_HPP
+
+# define DEF    "\033[0m"
+# define BLK	"\033[30m"
+# define RED	"\033[31m"
+# define GRN	"\033[32m"
+# define YLW	"\033[33m"
+# define BLUE	"\033[34m"
+# define MAG	"\033[35m"
+# define CYAN	"\033[36m"
+# define WHITE	"\033[37m"
+
+# define BBLK	"\033[1m\033[30m"
+# define BRED	"\033[1m\033[31m"
+# define BGRN	"\033[1m\033[32m"
+# define BYLW	"\033[1m\033[33m"
+# define BBLUE	"\033[1m\033[34m"
+# define BMAG	"\033[1m\033[35m"
+# define BCYAN	"\033[1m\033[36m"
+# define BWHITE	"\033[1m\033[37m"
 
 # include <iostream>
 # include <algorithm>
