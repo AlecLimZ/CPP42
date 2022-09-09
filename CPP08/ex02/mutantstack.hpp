@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 11:57:48 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/08 18:24:31 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/09 08:29:53 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,43 +19,30 @@
 # include <deque>
 # include <vector>
 # include <list>
+# include <stack>
+
+# include <iterator>
 
 using std::cout;
 using std::endl;
 using std::deque;
 using std::vector;
 using std::list;
+using std::stack;
 
-typedef size_t size_type;
-
-template <typename T, typename Container = std::deque<T> >
-class MutantStack
+template <typename T, typename Container = deque<T> >
+class MutantStack: public std::stack<T>
 {
-	typedef T value_type;
-	typedef T& reference;
-	typedef const T& const_reference;
-	protected:
-		Container C;
 	public:
-		// Canonical Form
-		explicit MutantStack(Container const & cont = Container()); // until C++11
-		MutantStack(MutantStack const & src);
+		//Conanical Form
+		MutantStack(void);
 		~MutantStack(void);
+		MutantStack(MutantStack const & src);
 		MutantStack & operator=(MutantStack const & rhs);
 
-		//access to the top element
-		reference top();
-		const_reference top() const;
-
-		// push & pop
-		void push(value_type const & value);
-		void pop();
-
-		// check if empty
-		bool empty() const;
-
-		//size
-		size_type size(void) const; // size of the stack size
+		typedef typename stack<T>::container_type::iterator iterator;
+		//typename stack<T>::container_type::iterator begin(void) <--- it dont work
+		iterator begin(void);
 };
 
 #endif
