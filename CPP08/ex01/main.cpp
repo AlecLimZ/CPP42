@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 11:38:18 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/09 13:47:53 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/12 11:30:48 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int main(int ac, char **av)
 {
-	int csize = 10000;
+	int csize = 50;
 	if (ac > 2)
 		return (0);
 	else if (ac == 2)

@@ -6,7 +6,7 @@
 /*   By: leng-chu <-chu@student.42kl.edu.my>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/08 12:05:51 by leng-chu          #+#    #+#             */
-/*   Updated: 2022/09/09 13:52:02 by leng-chu         ###   ########.fr       */
+/*   Updated: 2022/09/12 12:49:59 by leng-chu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,27 @@ int main(void)
 		++itt;
 	}
 	std::list<int> slist(listack);
+	
+	cout <<  MAG"=====Deque=====" << endl;
+	std::deque<int> des;
+	des.push_back(5);
+	des.push_back(17);
+	std::cout << des.back() << std::endl;
+	des.pop_back();
+	std::cout << des.size() << std::endl;
+	des.push_back(3);
+	des.push_back(5);
+	des.push_back(737);
+	des.push_back(42);
+	des.push_back(0);
+	std::deque<int>::iterator itd = des.begin();
+	std::deque<int>::iterator itde = des.end();
+	++itd;
+	--itd;
+	while (itd != itde)	
+	{
+		std::cout << *itd << std::endl;
+		++itd;
+	}
 	return (0);
 }
